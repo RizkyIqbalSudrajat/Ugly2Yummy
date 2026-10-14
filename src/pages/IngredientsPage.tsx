@@ -41,7 +41,7 @@ export const IngredientsPage: React.FC = () => {
             <div className="relative w-full overflow-hidden bg-[#F5F5F7]">
               <SmartImage
                 src={featuredIngredient.gambar}
-                alt={featuredIngredient.nama}
+                alt={featuredIngredient.altText || featuredIngredient.nama}
                 fallbackEmoji={featuredIngredient.emoji}
                 aspectRatio="16:9"
                 hoverZoom={true}
@@ -109,7 +109,7 @@ export const IngredientsPage: React.FC = () => {
               <div className="relative w-full overflow-hidden bg-[#F5F5F7]">
                 <SmartImage
                   src={ingredient.gambar}
-                  alt={ingredient.nama}
+                  alt={ingredient.altText || ingredient.nama}
                   fallbackEmoji={ingredient.emoji}
                   aspectRatio="4:3"
                   hoverZoom={true}

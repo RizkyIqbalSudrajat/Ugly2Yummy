@@ -1,5 +1,44 @@
 import { Ingredient, Product, UserProfile, ImpactStats } from '../types';
 
+// ============================================================================
+// FOTO BAHAN "UGLY" (TIDAK SEMPURNA)
+// Foto memperlihatkan bahan yang tidak sempurna (bengkok, bercabang, berbintik,
+// kecil, penyok) dari kebun petani mitra:
+// - Tomat Bengkok: [TEMPEL LINK]
+// - Wortel Bercabang: [TEMPEL LINK]
+// - Pisang Berbintik: [TEMPEL LINK]
+// - Mangga Mungil: [TEMPEL LINK]
+// - Apel Mungil: [TEMPEL LINK]
+// - Stroberi Penyok: [TEMPEL LINK]
+// ============================================================================
+export const UGLY_INGREDIENT_LINKS: Record<string, string> = {
+  'tomat-bengkok':
+    'https://images.unsplash.com/photo-1566842600175-97dca489844f?auto=format&fit=crop&w=1200&q=80',
+  'wortel-bercabang':
+    'https://images.unsplash.com/photo-1447175008436-054170c2e979?auto=format&fit=crop&w=1200&q=80',
+  'pisang-berbintik':
+    'https://images.unsplash.com/photo-1603833665858-e61d17a86224?auto=format&fit=crop&w=1200&q=80',
+  'mangga-mungil':
+    'https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?auto=format&fit=crop&w=1200&q=80',
+  'apel-mungil':
+    'https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&w=1200&q=80',
+  'stroberi-penyok':
+    'https://images.unsplash.com/photo-1587393855524-087f83d95bc9?auto=format&fit=crop&w=1200&q=80',
+};
+
+// ============================================================================
+// FOTO PRODUK JADI (SESUDAH)
+// Slot untuk menempel link foto produk dari pengguna:
+// 1. Saus Tomat Panggang: [TEMPEL LINK] (sebelumnya broken 404 photo-1572441712711-2d0eb5fef7aa)
+// 2. Sambal Tomat Roasted: [TEMPEL LINK] (sebelumnya salah foto jeruk photo-1546548970-71785318a17b)
+// ============================================================================
+export const PRODUCT_CUSTOM_LINKS: Record<string, string> = {
+  'saus-tomat-panggang':
+    'https://images.unsplash.com/photo-1574894709920-11b28e7367e3?auto=format&fit=crop&w=800&q=80',
+  'sambal-tomat-roasted':
+    'https://images.unsplash.com/photo-1567337710282-00832b415979?auto=format&fit=crop&w=800&q=80',
+};
+
 export const INGREDIENTS: Ingredient[] = [
   {
     id: 'tomat-bengkok',
@@ -31,7 +70,8 @@ export const INGREDIENTS: Ingredient[] = [
       fotoUrl: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=400&q=80',
     },
     totalKgTerselamatkan: 3420,
-    gambar: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=1200&q=80',
+    altText: 'Tomat bengkok dengan kulit retak halus dari Lembang',
+    gambar: UGLY_INGREDIENT_LINKS['tomat-bengkok'],
     produkOlahIds: ['saus-tomat-panggang', 'sambal-tomat-roasted'],
   },
   {
@@ -63,7 +103,8 @@ export const INGREDIENTS: Ingredient[] = [
       fotoUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
     },
     totalKgTerselamatkan: 2150,
-    gambar: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5c317?auto=format&fit=crop&w=1200&q=80',
+    altText: 'Wortel bercabang dua kaki akibat bebatuan lereng Dieng Wonosobo',
+    gambar: UGLY_INGREDIENT_LINKS['wortel-bercabang'],
     produkOlahIds: ['keripik-wortel-panggang'],
   },
   {
@@ -96,7 +137,8 @@ export const INGREDIENTS: Ingredient[] = [
       fotoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
     },
     totalKgTerselamatkan: 2890,
-    gambar: 'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=1200&q=80',
+    altText: 'Pisang kematangan puncak dengan bintik cokelat sugar freckles dari Lampung',
+    gambar: UGLY_INGREDIENT_LINKS['pisang-berbintik'],
     produkOlahIds: ['banana-bread-pisang-bintik', 'smoothie-mangga-pisang'],
   },
   {
@@ -128,7 +170,8 @@ export const INGREDIENTS: Ingredient[] = [
       fotoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
     },
     totalKgTerselamatkan: 1640,
-    gambar: 'https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=1200&q=80',
+    altText: 'Mangga mungil dengan goresan alami ranting angin laut Indramayu',
+    gambar: UGLY_INGREDIENT_LINKS['mangga-mungil'],
     produkOlahIds: ['selai-mangga-mungil', 'smoothie-mangga-pisang'],
   },
   {
@@ -160,7 +203,8 @@ export const INGREDIENTS: Ingredient[] = [
       fotoUrl: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=400&q=80',
     },
     totalKgTerselamatkan: 1280,
-    gambar: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=1200&q=80',
+    altText: 'Apel mungil asimetris hasil terasering lereng pegunungan Batu',
+    gambar: UGLY_INGREDIENT_LINKS['apel-mungil'],
     produkOlahIds: ['keripik-apel-batu'],
   },
   {
@@ -192,7 +236,8 @@ export const INGREDIENTS: Ingredient[] = [
       fotoUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
     },
     totalKgTerselamatkan: 1100,
-    gambar: 'https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=1200&q=80',
+    altText: 'Stroberi sedikit penyok dan pipih tertekan daun di bedengan Ciwidey',
+    gambar: UGLY_INGREDIENT_LINKS['stroberi-penyok'],
     produkOlahIds: ['selai-stroberi-ciwidey'],
   },
 ];
@@ -213,7 +258,7 @@ export const PRODUCTS: Product[] = [
     estimasiKgTerselamatkan: 0.5,
     rating: 4.9,
     jumlahUlasan: 148,
-    gambar: 'https://images.unsplash.com/photo-1572441712711-2d0eb5fef7aa?auto=format&fit=crop&w=800&q=80',
+    gambar: PRODUCT_CUSTOM_LINKS['saus-tomat-panggang'],
     gambarEmojiFallback: '🍅',
     ingredientId: 'tomat-bengkok',
     tersedia: true,
@@ -233,7 +278,7 @@ export const PRODUCTS: Product[] = [
     estimasiKgTerselamatkan: 0.4,
     rating: 4.8,
     jumlahUlasan: 92,
-    gambar: 'https://images.unsplash.com/photo-1546548970-71785318a17b?auto=format&fit=crop&w=800&q=80',
+    gambar: PRODUCT_CUSTOM_LINKS['sambal-tomat-roasted'],
     gambarEmojiFallback: '🍅',
     ingredientId: 'tomat-bengkok',
     tersedia: true,

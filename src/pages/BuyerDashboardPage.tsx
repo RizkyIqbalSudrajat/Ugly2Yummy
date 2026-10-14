@@ -193,7 +193,7 @@ export const BuyerDashboardPage: React.FC = () => {
                   <div className="relative rounded-2xl overflow-hidden bg-[#F5F5F7] mb-3.5 aspect-[4/3]">
                     <SmartImage
                       src={ingredient.gambar}
-                      alt={ingredient.nama}
+                      alt={ingredient.altText || ingredient.nama}
                       fallbackEmoji={ingredient.emoji}
                       aspectRatio="4:3"
                       hoverZoom={true}

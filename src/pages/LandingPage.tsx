@@ -30,9 +30,14 @@ const fadeUpVariant: Variants = {
   },
 };
 
+// Foto latar belakang lahan pertanian untuk Hero
+const HERO_FARM_IMAGE =
+  'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=2000&q=80';
+
 export const LandingPage: React.FC = () => {
   const { isLoggedIn, loginDemo } = useAuth();
   const navigate = useNavigate();
+  const [bgImageError, setBgImageError] = React.useState(false);
 
   // Tomat Bengkok ingredient for section 5
   const tomatBengkok = INGREDIENTS.find((i) => i.id === 'tomat-bengkok') || INGREDIENTS[0];
@@ -56,112 +61,132 @@ export const LandingPage: React.FC = () => {
   return (
     <div className="overflow-hidden">
       {/* =========================================================================
-          1. HERO SECTION
+          1. HERO SECTION (Latar Foto Pertanian Full-Width + Overlay Gelap)
           ========================================================================= */}
-      <section className="pt-12 sm:pt-20 md:pt-28 pb-14 sm:pb-24 md:pb-32">
-        <Container>
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeUpVariant}
-            className="max-w-4xl mx-auto text-center"
-          >
-            {/* Label Kecil */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EBF4EE] text-[#2E7D4F] text-xs font-semibold uppercase tracking-wider mb-6 sm:mb-8 border border-[#2E7D4F]/15">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#2E7D4F]" />
-              <span>Toko Online Produk Upcycled</span>
-            </div>
+      <section className="relative w-full min-h-[80vh] md:min-h-[85vh] lg:min-h-[90vh] flex items-center bg-gradient-to-br from-[#0a1c10] via-[#122e1b] to-[#07130a] overflow-hidden -mt-[52px] sm:-mt-14 pt-[80px] sm:pt-24 pb-14 sm:pb-20">
+        {/* Foto Background Pertanian Full-Width */}
+        {!bgImageError && (
+          <img
+            src={HERO_FARM_IMAGE}
+            alt="Lahan pertanian tempat bahan Ugly2Yummy dipanen"
+            onError={() => setBgImageError(true)}
+            className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none"
+          />
+        )}
 
-            {/* Judul Besar */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#1D1D1F] leading-[1.08] text-balance">
-              Tak sempurna di mata, <br className="hidden sm:inline" />
-              <span className="font-['Instrument_Serif'] italic font-normal text-[#2E7D4F] text-[1.12em] tracking-normal inline-block">
-                sempurna di rasa.
-              </span>
-            </h1>
+        {/* Overlay Gelap Gradasi untuk Aksesibilitas Kontras Teks (60%-85% ke 25%) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/35 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40 pointer-events-none" />
 
-            {/* Satu Kalimat Subjudul */}
-            <p className="mt-6 sm:mt-8 text-lg sm:text-xl md:text-2xl text-[#6E6E73] max-w-2xl mx-auto leading-relaxed text-balance font-normal">
-              Belanja selai, saus, dan camilan dari bahan imperfect, dikirim langsung ke rumahmu.
-            </p>
+        <Container className="relative z-10 w-full">
+          <div className="lg:grid lg:grid-cols-12 lg:gap-12 items-center">
+            {/* Kolom Teks & Aksi Hero (Di HP cukup teks dan tombol saja) */}
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={fadeUpVariant}
+              className="lg:col-span-7 xl:col-span-7 text-left max-w-2xl"
+            >
+              {/* Label Kecil: Toko Online Produk Upcycled */}
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md text-white text-xs font-semibold uppercase tracking-wider mb-5 sm:mb-6 border border-white/20 shadow-xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#4ADE80]" />
+                <span>Toko Online Produk Upcycled</span>
+              </div>
 
-            {/* Tombol Aksi */}
-            <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-4">
-              <Button
-                to="/produk"
-                variant="primary"
-                size="lg"
-                icon={<ArrowRight className="w-4 h-4" />}
-                iconPosition="right"
-              >
-                Belanja Sekarang
-              </Button>
-              <Button
-                to="/cerita-bahan"
-                variant="text"
-                size="lg"
-                className="text-[#1D1D1F] hover:text-[#2E7D4F]"
-              >
-                Cerita Bahan
-              </Button>
-            </div>
+              {/* Judul Besar dengan Kata Aksen Hijau Muda */}
+              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.08] text-balance">
+                Tak sempurna di mata, <br className="hidden sm:inline" />
+                <span className="font-['Instrument_Serif'] italic font-normal text-[#86EFAC] text-[1.12em] tracking-normal inline-block drop-shadow-sm">
+                  sempurna di rasa.
+                </span>
+              </h1>
 
-            {/* Baris Info Kecil */}
-            <p className="mt-4 sm:mt-5 text-xs sm:text-sm text-[#6E6E73]">
-              Kirim ke seluruh Indonesia · Bayar via transfer, e-wallet, atau COD
-            </p>
-          </motion.div>
+              {/* Subjudul Putih Jelas & Ramah */}
+              <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-white/90 max-w-xl leading-relaxed text-balance font-normal">
+                Belanja selai, saus, dan camilan dari bahan imperfect, dikirim langsung ke rumahmu.
+              </p>
 
-          {/* Foto Produk Besar Bersudut Membulat (Tanpa Bingkai & Bayangan Tebal) */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.2, ease: 'easeOut' }}
-            className="mt-14 sm:mt-20 max-w-5xl mx-auto"
-          >
-            <div className="space-y-3 sm:space-y-0 relative">
-              <div className="relative group rounded-3xl sm:rounded-[36px] overflow-hidden bg-[#F5F5F7]">
-                <SmartImage
-                  src={heroProduct.gambar}
-                  alt="Saus Tomat Panggang Artisan Ugly2Yummy"
-                  fallbackEmoji="🍅"
-                  aspectRatio="16:9"
-                  hoverZoom={true}
-                  containerClassName="w-full max-h-[560px]"
-                />
+              {/* Tombol Aksi: Hijau Pill & Putih Transparan Blur */}
+              <div className="mt-7 sm:mt-9 flex flex-wrap items-center gap-3 sm:gap-4">
+                <Button
+                  to="/produk"
+                  variant="primary"
+                  size="lg"
+                  icon={<ArrowRight className="w-4 h-4" />}
+                  iconPosition="right"
+                  className="bg-[#2E7D4F] hover:bg-[#256640] text-white shadow-lg shadow-black/30 border-0"
+                >
+                  Belanja Sekarang
+                </Button>
+                <Link
+                  to="/cerita-bahan"
+                  className="inline-flex items-center justify-center font-medium transition-all duration-200 rounded-full text-sm sm:text-base px-6 py-3 min-h-[46px] sm:min-h-[50px] bg-white/15 hover:bg-white/25 text-white border border-white/30 backdrop-blur-md shadow-xs active:scale-[0.98]"
+                >
+                  Cerita Bahan
+                </Link>
+              </div>
 
-                {/* Desktop floating caption badge */}
-                <div className="hidden sm:flex absolute bottom-6 left-6 z-10 bg-white/90 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white/40 shadow-none items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-[#EBF4EE] text-[#2E7D4F] flex items-center justify-center font-bold text-xs">
-                    0.5
+              {/* Baris Info Kecil Pengiriman */}
+              <p className="mt-4 sm:mt-5 text-xs sm:text-sm text-white/80 leading-relaxed">
+                Kirim ke seluruh Indonesia · Bayar via transfer, e-wallet, atau COD
+              </p>
+            </motion.div>
+
+            {/* Kolom Kanan: Kartu Kaca Produk Unggulan (Hanya tampil di Desktop, bersih & elegan) */}
+            <motion.div
+              initial={{ opacity: 0, x: 25 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
+              className="hidden lg:flex lg:col-span-5 xl:col-span-5 justify-end"
+            >
+              <div className="w-full max-w-sm bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-5 text-white shadow-[0_20px_50px_rgba(0,0,0,0.35)] group hover:border-white/35 transition-all duration-300">
+                <div className="relative rounded-2xl overflow-hidden aspect-4/3 bg-black/20 mb-4">
+                  <SmartImage
+                    src={heroProduct.gambar}
+                    alt={heroProduct.nama}
+                    fallbackEmoji={heroProduct.gambarEmojiFallback}
+                    aspectRatio="4:3"
+                    hoverZoom={true}
+                    containerClassName="w-full h-full"
+                  />
+                  <div className="absolute top-3 left-3 z-10">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-[#2E7D4F]/95 text-white backdrop-blur-md shadow-xs">
+                      <Sparkles className="w-3 h-3" />
+                      <span>0,5 kg Terselamatkan</span>
+                    </span>
                   </div>
+                </div>
+
+                <div className="space-y-1.5">
+                  <span className="text-[11px] uppercase tracking-wider text-white/70 font-semibold block">
+                    Pilihan Favorit
+                  </span>
+                  <h3 className="text-lg font-bold text-white leading-snug">
+                    {heroProduct.nama}
+                  </h3>
+                  <p className="text-xs text-white/80 line-clamp-2 leading-relaxed">
+                    {heroProduct.deskripsiSingkat}
+                  </p>
+                </div>
+
+                <div className="mt-4 pt-3.5 border-t border-white/15 flex items-center justify-between">
                   <div>
-                    <p className="text-xs font-semibold text-[#1D1D1F]">
-                      Saus Tomat Panggang Artisan
-                    </p>
-                    <p className="text-[11px] text-[#6E6E73]">
-                      Dari Tomat Bengkok Lembang · 0,5 kg diselamatkan
-                    </p>
+                    <span className="text-base font-extrabold text-white tabular-nums">
+                      Rp 35.000
+                    </span>
+                    <span className="text-xs text-white/70 ml-1">/ 250 ml</span>
                   </div>
+                  <Link
+                    to={`/produk/${heroProduct.id}`}
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-[#86EFAC] hover:text-white transition-colors"
+                  >
+                    <span>Lihat Produk</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
                 </div>
               </div>
-
-              {/* Mobile caption dipindah ke bawah foto agar foto terlihat utuh */}
-              <div className="flex sm:hidden bg-white rounded-2xl border border-[#E8E8ED] px-4 py-3 items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-[#EBF4EE] text-[#2E7D4F] flex items-center justify-center font-bold text-xs shrink-0">
-                  0.5
-                </div>
-                <div>
-                  <p className="text-xs font-semibold text-[#1D1D1F]">
-                    Saus Tomat Panggang Artisan
-                  </p>
-                  <p className="text-[11px] text-[#6E6E73]">
-                    Dari Tomat Bengkok Lembang · 0,5 kg diselamatkan
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </Container>
       </section>
 
@@ -477,7 +502,7 @@ export const LandingPage: React.FC = () => {
               <div className="lg:col-span-5 rounded-2xl sm:rounded-3xl overflow-hidden bg-[#F5F5F7]">
                 <SmartImage
                   src={tomatBengkok.gambar}
-                  alt={tomatBengkok.nama}
+                  alt={tomatBengkok.altText || tomatBengkok.nama}
                   fallbackEmoji={tomatBengkok.emoji}
                   aspectRatio="4:3"
                   hoverZoom={true}

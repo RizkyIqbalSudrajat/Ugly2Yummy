@@ -302,7 +302,7 @@ export const ProductDetailPage: React.FC = () => {
               <div className="relative rounded-2xl overflow-hidden bg-[#F5F5F7] mb-4">
                 <SmartImage
                   src={ingredient.gambar}
-                  alt={`Bahan mentah ${ingredient.nama}`}
+                  alt={ingredient.altText || `Bahan mentah ${ingredient.nama}`}
                   fallbackEmoji={ingredient.emoji}
                   aspectRatio="4:3"
                   hoverZoom={true}

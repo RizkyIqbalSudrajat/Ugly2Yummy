@@ -31,7 +31,7 @@ export const SmartImage: React.FC<SmartImageProps> = ({
     '4:5': 'aspect-[4/5]',
   }[aspectRatio];
 
-  const showFallback = !src || hasError;
+  const showFallback = !src || src.includes('[TEMPEL') || hasError;
 
   return (
     <div

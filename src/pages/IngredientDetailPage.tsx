@@ -118,7 +118,7 @@ export const IngredientDetailPage: React.FC = () => {
             <div className="absolute inset-0 z-0">
               <SmartImage
                 src={ingredient.gambar}
-                alt={ingredient.nama}
+                alt={ingredient.altText || ingredient.nama}
                 fallbackEmoji={ingredient.emoji}
                 aspectRatio="16:9"
                 containerClassName="w-full h-full"

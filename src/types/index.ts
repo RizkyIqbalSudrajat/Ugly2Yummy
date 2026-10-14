@@ -47,6 +47,7 @@ export interface Ingredient {
   profilPetani?: FarmerProfile;
   totalKgTerselamatkan: number;
   gambar: string;
+  altText?: string;
   produkOlahIds: string[];
 }
 
