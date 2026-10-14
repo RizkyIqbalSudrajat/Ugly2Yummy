@@ -35,16 +35,16 @@ export const SmartImage: React.FC<SmartImageProps> = ({
 
   return (
     <div
-      className={`relative overflow-hidden bg-[#F2F1EC] ${aspectClasses} ${containerClassName}`}
+      className={`relative overflow-hidden bg-[#F5F5F7] ${aspectClasses} ${containerClassName}`}
     >
       {/* Skeleton / placeholder state while image loads */}
       {!isLoaded && !showFallback && (
-        <div className="absolute inset-0 bg-[#E8E6E1] animate-pulse" />
+        <div className="absolute inset-0 bg-[#E8E8ED] animate-pulse" />
       )}
 
       {showFallback ? (
         <div
-          className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-[#FAF8F5] via-[#F3EFEA] to-[#E9E4DB] text-[#6E6E73] p-4 select-none"
+          className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-[#F5F5F7] via-[#EFEFF2] to-[#E5E5EA] text-[#6E6E73] p-4 select-none"
           role="img"
           aria-label={alt}
         >

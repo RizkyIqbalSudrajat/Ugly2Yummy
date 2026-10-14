@@ -27,7 +27,7 @@ export const OrderSuccessPage: React.FC = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="bg-white rounded-3xl sm:rounded-[36px] border border-[#E8E6E1] p-8 sm:p-14 text-center shadow-sm max-w-xl mx-auto space-y-8"
+          className="bg-white rounded-3xl sm:rounded-[36px] border border-[#E8E8ED] p-8 sm:p-14 text-center shadow-none max-w-xl mx-auto space-y-8"
         >
           {/* Ikon Centang Besar dengan Animasi Halus */}
           <div className="relative mx-auto w-20 h-20 sm:w-24 sm:h-24">
@@ -40,7 +40,7 @@ export const OrderSuccessPage: React.FC = () => {
                 damping: 20,
                 delay: 0.1,
               }}
-              className="w-full h-full rounded-full bg-[#EBF4EE] border-4 border-[#2E7D4F]/20 flex items-center justify-center text-[#2E7D4F] shadow-sm"
+              className="w-full h-full rounded-full bg-[#EBF4EE] border-4 border-[#2E7D4F]/20 flex items-center justify-center text-[#2E7D4F] shadow-none"
             >
               <motion.div
                 initial={{ pathLength: 0, opacity: 0 }}
@@ -83,7 +83,7 @@ export const OrderSuccessPage: React.FC = () => {
           </div>
 
           {/* Ringkasan Singkat Pesanan */}
-          <div className="p-4 rounded-2xl bg-[#FAFAF7] border border-[#E8E6E1] text-xs text-[#6E6E73] space-y-2 text-left">
+          <div className="p-4 rounded-2xl bg-[#F5F5F7] border border-[#E8E8ED] text-xs text-[#6E6E73] space-y-2 text-left">
             <div className="flex items-center justify-between">
               <span className="flex items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5 text-[#2E7D4F]" />

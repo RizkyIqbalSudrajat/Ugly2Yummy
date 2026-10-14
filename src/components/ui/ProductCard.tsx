@@ -23,6 +23,19 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     maximumFractionDigits: 0,
   }).format(product.harga);
 
+  const formattedOriginalPrice = product.hargaPembanding
+    ? new Intl.NumberFormat('id-ID', {
+        style: 'currency',
+        currency: 'IDR',
+        maximumFractionDigits: 0,
+      }).format(product.hargaPembanding)
+    : null;
+
+  const diskonPersen =
+    product.hargaPembanding && product.hargaPembanding > product.harga
+      ? Math.round(((product.hargaPembanding - product.harga) / product.hargaPembanding) * 100)
+      : 0;
+
   const formattedKg = product.estimasiKgTerselamatkan.toLocaleString('id-ID', {
     minimumFractionDigits: 1,
     maximumFractionDigits: 1,
@@ -35,10 +48,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <div
       onClick={handleCardClick}
-      className={`group relative bg-white rounded-2xl sm:rounded-3xl border border-[#E8E6E1] overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer ${className}`}
+      className={`group relative bg-white rounded-2xl sm:rounded-3xl border border-[#E8E8ED] overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-0.5 hover:border-[#2E7D4F]/30 shadow-none hover:shadow-xs cursor-pointer ${className}`}
     >
       {/* Product Image Slot */}
-      <div className="relative w-full overflow-hidden bg-[#F2F1EC]">
+      <div className="relative w-full overflow-hidden bg-[#F5F5F7]">
         <SmartImage
           src={product.gambar}
           alt={product.nama}
@@ -79,7 +92,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           </p>
 
           {/* Main Ingredient Origin Note */}
-          <div className="mt-3 pt-3 border-t border-[#E8E6E1]/70 flex items-center gap-1.5 text-xs text-[#1D1D1F]/80">
+          <div className="mt-3 pt-3 border-t border-[#E8E8ED]/70 flex items-center gap-1.5 text-xs text-[#1D1D1F]/80">
             <span className="text-[#6E6E73]">Dari:</span>
             <span className="font-medium text-[#2E7D4F] bg-[#EBF4EE] px-2 py-0.5 rounded-full text-[11px]">
               {product.bahanUtama}
@@ -88,15 +101,27 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </div>
 
         {/* Price & Action */}
-        <div className="mt-5 pt-3 flex items-center justify-between">
+        <div className="mt-5 pt-3 flex items-center justify-between gap-2">
           <div>
-            <span className="text-xs text-[#6E6E73] block">Harga</span>
-            <span className="font-bold text-base sm:text-lg text-[#1D1D1F] tabular-nums tracking-tight">
-              {formattedPrice}
-            </span>
+            <span className="text-[11px] text-[#6E6E73] block mb-0.5">Harga</span>
+            <div className="flex items-baseline gap-1.5 flex-wrap">
+              <span className="font-bold text-base sm:text-lg text-[#1D1D1F] tabular-nums tracking-tight">
+                {formattedPrice}
+              </span>
+              {formattedOriginalPrice && (
+                <span className="text-xs text-[#8E8E93] line-through tabular-nums">
+                  {formattedOriginalPrice}
+                </span>
+              )}
+            </div>
+            {diskonPersen > 0 && (
+              <span className="inline-block text-[10px] font-bold text-[#2E7D4F] bg-[#EBF4EE] px-1.5 py-0.5 rounded-md mt-0.5">
+                Hemat {diskonPersen}%
+              </span>
+            )}
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <Link
               to={`/produk/${product.id}`}
               onClick={(e) => e.stopPropagation()}

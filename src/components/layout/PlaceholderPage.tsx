@@ -22,7 +22,7 @@ export const PlaceholderPage: React.FC<PlaceholderPageProps> = ({
   return (
     <div className="py-20 sm:py-28 min-h-[60vh] flex items-center">
       <Container size="narrow">
-        <div className="bg-white rounded-3xl border border-[#E8E6E1] p-8 sm:p-12 text-center shadow-xs">
+        <div className="bg-white rounded-3xl border border-[#E8E8ED] p-8 sm:p-12 text-center shadow-none">
           <div className="w-12 h-12 rounded-full bg-[#EBF4EE] text-[#2E7D4F] flex items-center justify-center mx-auto mb-6">
             <Sparkles className="w-6 h-6" />
           </div>
@@ -35,7 +35,7 @@ export const PlaceholderPage: React.FC<PlaceholderPageProps> = ({
             {title}
           </h1>
 
-          <div className="inline-block px-3 py-1 rounded-full bg-[#F2F1EC] text-xs font-medium text-[#6E6E73] mb-6">
+          <div className="inline-block px-3 py-1 rounded-full bg-[#F5F5F7] text-xs font-medium text-[#6E6E73] mb-6">
             Segera hadir di langkah berikutnya
           </div>
 

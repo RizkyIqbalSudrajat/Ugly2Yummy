@@ -2,7 +2,9 @@ export interface Product {
   id: string;
   nama: string;
   kategori: string;
+  kebutuhan?: string[];
   harga: number;
+  hargaPembanding?: number;
   ukuran: string;
   deskripsiSingkat: string;
   deskripsiLengkap?: string;
@@ -15,6 +17,15 @@ export interface Product {
   gambarEmojiFallback: string;
   ingredientId: string;
   tersedia: boolean;
+}
+
+export interface FarmerProfile {
+  nama: string;
+  daerah: string;
+  lamaBertani: string;
+  caraTanam: string;
+  kutipan: string;
+  fotoUrl?: string;
 }
 
 export interface Ingredient {
@@ -33,6 +44,7 @@ export interface Ingredient {
     nama: string;
     peran: string;
   };
+  profilPetani?: FarmerProfile;
   totalKgTerselamatkan: number;
   gambar: string;
   produkOlahIds: string[];

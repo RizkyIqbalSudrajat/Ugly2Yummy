@@ -8,6 +8,7 @@ import { Search, Sparkles, ArrowUpRight } from 'lucide-react';
 export const CatalogPage: React.FC = () => {
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState<string>('Semua');
+  const [selectedKebutuhan, setSelectedKebutuhan] = useState<string>('Semua');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   const categories = [
@@ -19,6 +20,15 @@ export const CatalogPage: React.FC = () => {
     'Minuman',
   ];
 
+  const kebutuhanList = [
+    'Semua',
+    'Sarapan',
+    'Camilan Sehat',
+    'Masak Harian',
+    'Oleh-oleh',
+    'Hampers',
+  ];
+
   // Helper to format origin from ingredient
   const getProductOrigin = (ingredientId: string, bahanUtama: string) => {
     if (bahanUtama === 'Mangga + Pisang') return 'Indramayu & Lampung';
@@ -27,19 +37,26 @@ export const CatalogPage: React.FC = () => {
     return ing.asal.split(',')[0].trim();
   };
 
-  // Filtered products list
+  // Filtered products list (kategori, kebutuhan, dan search)
   const filteredProducts = useMemo(() => {
     return PRODUCTS.filter((product) => {
       const matchCategory =
         selectedCategory === 'Semua' || product.kategori === selectedCategory;
+      const matchKebutuhan =
+        selectedKebutuhan === 'Semua' ||
+        (product.kebutuhan && product.kebutuhan.includes(selectedKebutuhan));
       const matchSearch =
         searchQuery.trim() === '' ||
         product.nama.toLowerCase().includes(searchQuery.toLowerCase()) ||
         product.bahanUtama.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.kategori.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchCategory && matchSearch;
+        product.kategori.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (product.kebutuhan &&
+          product.kebutuhan.some((k) =>
+            k.toLowerCase().includes(searchQuery.toLowerCase())
+          ));
+      return matchCategory && matchKebutuhan && matchSearch;
     });
-  }, [selectedCategory, searchQuery]);
+  }, [selectedCategory, selectedKebutuhan, searchQuery]);
 
   return (
     <div className="py-12 sm:py-20 md:py-24">
@@ -58,7 +75,7 @@ export const CatalogPage: React.FC = () => {
         </div>
 
         {/* Search Bar & Filter Chips Controls */}
-        <div className="space-y-6 mb-12 sm:mb-16">
+        <div className="space-y-5 mb-12 sm:mb-16">
           {/* Search Bar */}
           <div className="relative max-w-md">
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-[#6E6E73]">
@@ -69,26 +86,57 @@ export const CatalogPage: React.FC = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Cari selai, saus, keripik, atau bahan..."
-              className="w-full pl-11 pr-4 py-3 rounded-full border border-[#E8E6E1] bg-white text-sm text-[#1D1D1F] placeholder-[#6E6E73]/60 focus:border-[#2E7D4F] focus:ring-2 focus:ring-[#2E7D4F]/15 outline-none transition-all shadow-xs"
+              className="w-full pl-11 pr-4 py-3 rounded-full border border-[#E8E8ED] bg-white text-sm text-[#1D1D1F] placeholder-[#6E6E73]/60 focus:border-[#2E7D4F] focus:ring-2 focus:ring-[#2E7D4F]/15 outline-none transition-all shadow-none"
             />
           </div>
 
-          {/* Category Chips */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
-            {categories.map((category) => (
-              <button
-                key={category}
-                type="button"
-                onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap cursor-pointer select-none ${
-                  selectedCategory === category
-                    ? 'bg-[#1D1D1F] text-white shadow-xs'
-                    : 'bg-white text-[#6E6E73] border border-[#E8E6E1] hover:text-[#1D1D1F] hover:bg-[#F2F1EC]'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
+          {/* Baris 1: Kategori Produk */}
+          <div className="space-y-1.5">
+            <span className="text-[11px] font-semibold text-[#8E8E93] uppercase tracking-wider block">
+              Kategori:
+            </span>
+            <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  type="button"
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap cursor-pointer select-none ${
+                    selectedCategory === category
+                      ? 'bg-[#1D1D1F] text-white shadow-none'
+                      : 'bg-white text-[#6E6E73] border border-[#E8E8ED] hover:text-[#1D1D1F] hover:bg-[#F5F5F7]'
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Baris 2: Filter Kebutuhan "Cocok untuk" */}
+          <div className="space-y-1.5">
+            <span className="text-[11px] font-semibold text-[#8E8E93] uppercase tracking-wider block">
+              Cocok untuk:
+            </span>
+            <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
+              {kebutuhanList.map((item) => {
+                const isActive = selectedKebutuhan === item;
+                return (
+                  <button
+                    key={item}
+                    type="button"
+                    onClick={() => setSelectedKebutuhan(item)}
+                    className={`px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap cursor-pointer select-none ${
+                      isActive
+                        ? 'bg-[#2E7D4F] text-white shadow-none'
+                        : 'bg-white text-[#6E6E73] border border-[#E8E8ED] hover:text-[#1D1D1F] hover:bg-[#F5F5F7]'
+                    }`}
+                  >
+                    {item}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
 
@@ -107,10 +155,10 @@ export const CatalogPage: React.FC = () => {
                 <div
                   key={product.id}
                   onClick={() => navigate(`/produk/${product.id}`)}
-                  className="group bg-white rounded-3xl border border-[#E8E6E1] overflow-hidden flex flex-col justify-between shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                  className="group bg-white rounded-3xl border border-[#E8E8ED] overflow-hidden flex flex-col justify-between shadow-none hover:shadow-xs hover:border-[#2E7D4F]/30 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
                 >
                   {/* Foto Besar Rasio 4:5 dengan Hover Zoom */}
-                  <div className="relative w-full overflow-hidden bg-[#F2F1EC]">
+                  <div className="relative w-full overflow-hidden bg-[#F5F5F7]">
                     <SmartImage
                       src={product.gambar}
                       alt={product.nama}
@@ -129,7 +177,7 @@ export const CatalogPage: React.FC = () => {
                     </div>
 
                     {/* Hover detail indicator */}
-                    <div className="absolute bottom-4 right-4 z-10 w-9 h-9 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-[#1D1D1F] opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-sm">
+                    <div className="absolute bottom-4 right-4 z-10 w-9 h-9 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-[#1D1D1F] opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-xs">
                       <ArrowUpRight className="w-4 h-4 text-[#2E7D4F]" />
                     </div>
                   </div>
@@ -149,7 +197,7 @@ export const CatalogPage: React.FC = () => {
                     </div>
 
                     {/* Harga Tabular & Ukuran */}
-                    <div className="mt-5 pt-4 border-t border-[#E8E6E1]/70 flex items-center justify-between">
+                    <div className="mt-5 pt-4 border-t border-[#E8E8ED]/70 flex items-center justify-between">
                       <div>
                         <span className="text-base sm:text-lg font-extrabold text-[#1D1D1F] tabular-nums tracking-tight">
                           {formattedPrice}
@@ -169,7 +217,7 @@ export const CatalogPage: React.FC = () => {
             })}
           </div>
         ) : (
-          <div className="p-12 text-center bg-white rounded-3xl border border-[#E8E6E1]">
+          <div className="p-12 text-center bg-white rounded-3xl border border-[#E8E8ED]">
             <p className="text-base font-semibold text-[#1D1D1F]">
               Tidak ada produk yang cocok dengan pencarian Anda.
             </p>
@@ -179,11 +227,12 @@ export const CatalogPage: React.FC = () => {
             <button
               onClick={() => {
                 setSelectedCategory('Semua');
+                setSelectedKebutuhan('Semua');
                 setSearchQuery('');
               }}
-              className="mt-4 px-4 py-2 rounded-full bg-[#F2F1EC] text-xs font-semibold text-[#1D1D1F] hover:bg-[#E8E6E1] transition-colors cursor-pointer"
+              className="mt-4 px-4 py-2 rounded-full bg-[#F5F5F7] text-xs font-semibold text-[#1D1D1F] hover:bg-[#E8E8ED] transition-colors cursor-pointer"
             >
-              Reset Filter
+              Reset Semua Filter
             </button>
           </div>
         )}

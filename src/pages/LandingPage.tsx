@@ -58,7 +58,7 @@ export const LandingPage: React.FC = () => {
       {/* =========================================================================
           1. HERO SECTION
           ========================================================================= */}
-      <section className="pt-12 sm:pt-20 md:pt-28 pb-20 sm:pb-24 md:pb-32">
+      <section className="pt-12 sm:pt-20 md:pt-28 pb-14 sm:pb-24 md:pb-32">
         <Container>
           <motion.div
             initial="hidden"
@@ -69,7 +69,7 @@ export const LandingPage: React.FC = () => {
             {/* Label Kecil */}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EBF4EE] text-[#2E7D4F] text-xs font-semibold uppercase tracking-wider mb-6 sm:mb-8 border border-[#2E7D4F]/15">
               <span className="w-1.5 h-1.5 rounded-full bg-[#2E7D4F]" />
-              <span>Upcycled food dari petani lokal</span>
+              <span>Toko Online Produk Upcycled</span>
             </div>
 
             {/* Judul Besar */}
@@ -82,8 +82,7 @@ export const LandingPage: React.FC = () => {
 
             {/* Satu Kalimat Subjudul */}
             <p className="mt-6 sm:mt-8 text-lg sm:text-xl md:text-2xl text-[#6E6E73] max-w-2xl mx-auto leading-relaxed text-balance font-normal">
-              Menyelamatkan buah dan sayur berkualitas yang kerap disisihkan hanya karena rupa,
-              menjadi sajian lezat penuh kebaikan.
+              Belanja selai, saus, dan camilan dari bahan imperfect, dikirim langsung ke rumahmu.
             </p>
 
             {/* Tombol Aksi */}
@@ -95,7 +94,7 @@ export const LandingPage: React.FC = () => {
                 icon={<ArrowRight className="w-4 h-4" />}
                 iconPosition="right"
               >
-                Lihat Produk
+                Belanja Sekarang
               </Button>
               <Button
                 to="/cerita-bahan"
@@ -106,17 +105,22 @@ export const LandingPage: React.FC = () => {
                 Cerita Bahan
               </Button>
             </div>
+
+            {/* Baris Info Kecil */}
+            <p className="mt-4 sm:mt-5 text-xs sm:text-sm text-[#6E6E73]">
+              Kirim ke seluruh Indonesia · Bayar via transfer, e-wallet, atau COD
+            </p>
           </motion.div>
 
-          {/* Foto Produk Besar Bersudut Membulat */}
+          {/* Foto Produk Besar Bersudut Membulat (Tanpa Bingkai & Bayangan Tebal) */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.2, ease: 'easeOut' }}
             className="mt-14 sm:mt-20 max-w-5xl mx-auto"
           >
-            <div className="relative group bg-white rounded-3xl sm:rounded-[36px] p-3 sm:p-5 border border-[#E8E6E1] shadow-xl sm:shadow-2xl overflow-hidden">
-              <div className="relative rounded-2xl sm:rounded-[28px] overflow-hidden bg-[#F2F1EC]">
+            <div className="space-y-3 sm:space-y-0 relative">
+              <div className="relative group rounded-3xl sm:rounded-[36px] overflow-hidden bg-[#F5F5F7]">
                 <SmartImage
                   src={heroProduct.gambar}
                   alt="Saus Tomat Panggang Artisan Ugly2Yummy"
@@ -126,8 +130,8 @@ export const LandingPage: React.FC = () => {
                   containerClassName="w-full max-h-[560px]"
                 />
 
-                {/* Quiet caption badge */}
-                <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 z-10 bg-white/90 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white/40 shadow-sm flex items-center gap-3">
+                {/* Desktop floating caption badge */}
+                <div className="hidden sm:flex absolute bottom-6 left-6 z-10 bg-white/90 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white/40 shadow-none items-center gap-3">
                   <div className="w-8 h-8 rounded-full bg-[#EBF4EE] text-[#2E7D4F] flex items-center justify-center font-bold text-xs">
                     0.5
                   </div>
@@ -141,6 +145,21 @@ export const LandingPage: React.FC = () => {
                   </div>
                 </div>
               </div>
+
+              {/* Mobile caption dipindah ke bawah foto agar foto terlihat utuh */}
+              <div className="flex sm:hidden bg-white rounded-2xl border border-[#E8E8ED] px-4 py-3 items-center gap-3">
+                <div className="w-8 h-8 rounded-full bg-[#EBF4EE] text-[#2E7D4F] flex items-center justify-center font-bold text-xs shrink-0">
+                  0.5
+                </div>
+                <div>
+                  <p className="text-xs font-semibold text-[#1D1D1F]">
+                    Saus Tomat Panggang Artisan
+                  </p>
+                  <p className="text-[11px] text-[#6E6E73]">
+                    Dari Tomat Bengkok Lembang · 0,5 kg diselamatkan
+                  </p>
+                </div>
+              </div>
             </div>
           </motion.div>
         </Container>
@@ -149,7 +168,7 @@ export const LandingPage: React.FC = () => {
       {/* =========================================================================
           2. MISI: SATU PARAGRAF BESAR YANG TENANG
           ========================================================================= */}
-      <section className="py-20 sm:py-28 md:py-32 bg-[#F2F1EC] border-y border-[#E8E6E1]">
+      <section className="py-14 sm:py-24 md:py-32 bg-[#F5F5F7]">
         <Container size="narrow">
           <motion.div
             initial="hidden"
@@ -183,7 +202,7 @@ export const LandingPage: React.FC = () => {
       {/* =========================================================================
           3. CARA KERJA: 3 LANGKAH BERJAJAR
           ========================================================================= */}
-      <section className="py-20 sm:py-28 md:py-32">
+      <section className="py-14 sm:py-24 md:py-32">
         <Container>
           <motion.div
             initial="hidden"
@@ -210,14 +229,14 @@ export const LandingPage: React.FC = () => {
               whileInView="visible"
               viewport={{ once: true, margin: '-60px' }}
               variants={fadeUpVariant}
-              className="bg-white rounded-3xl p-8 sm:p-10 border border-[#E8E6E1] flex flex-col justify-between shadow-xs hover:border-[#2E7D4F]/30 transition-colors"
+              className="bg-white rounded-3xl p-8 sm:p-10 border border-[#E8E8ED] flex flex-col justify-between shadow-none hover:border-[#2E7D4F]/30 transition-colors"
             >
               <div>
                 <div className="flex items-center justify-between mb-8">
                   <div className="w-12 h-12 rounded-2xl bg-[#EBF4EE] text-[#2E7D4F] flex items-center justify-center">
                     <Truck className="w-6 h-6 stroke-[1.5]" />
                   </div>
-                  <span className="text-2xl font-bold text-[#E8E6E1] font-mono">01</span>
+                  <span className="text-2xl font-bold text-[#E8E8ED] font-mono">01</span>
                 </div>
 
                 <h3 className="text-xl font-bold text-[#1D1D1F] tracking-tight mb-3">
@@ -229,7 +248,7 @@ export const LandingPage: React.FC = () => {
                 </p>
               </div>
 
-              <div className="mt-8 pt-4 border-t border-[#E8E6E1]/60 text-xs text-[#2E7D4F] font-medium flex items-center gap-1.5">
+              <div className="mt-8 pt-4 border-t border-[#E8E8ED]/60 text-xs text-[#2E7D4F] font-medium flex items-center gap-1.5">
                 <HeartHandshake className="w-4 h-4" />
                 <span>86 Petani Mitra Terhubung</span>
               </div>
@@ -242,14 +261,14 @@ export const LandingPage: React.FC = () => {
               viewport={{ once: true, margin: '-60px' }}
               variants={fadeUpVariant}
               transition={{ delay: 0.1 }}
-              className="bg-white rounded-3xl p-8 sm:p-10 border border-[#E8E6E1] flex flex-col justify-between shadow-xs hover:border-[#2E7D4F]/30 transition-colors"
+              className="bg-white rounded-3xl p-8 sm:p-10 border border-[#E8E8ED] flex flex-col justify-between shadow-none hover:border-[#2E7D4F]/30 transition-colors"
             >
               <div>
                 <div className="flex items-center justify-between mb-8">
                   <div className="w-12 h-12 rounded-2xl bg-[#EBF4EE] text-[#2E7D4F] flex items-center justify-center">
                     <CookingPot className="w-6 h-6 stroke-[1.5]" />
                   </div>
-                  <span className="text-2xl font-bold text-[#E8E6E1] font-mono">02</span>
+                  <span className="text-2xl font-bold text-[#E8E8ED] font-mono">02</span>
                 </div>
 
                 <h3 className="text-xl font-bold text-[#1D1D1F] tracking-tight mb-3">
@@ -261,7 +280,7 @@ export const LandingPage: React.FC = () => {
                 </p>
               </div>
 
-              <div className="mt-8 pt-4 border-t border-[#E8E6E1]/60 text-xs text-[#2E7D4F] font-medium flex items-center gap-1.5">
+              <div className="mt-8 pt-4 border-t border-[#E8E8ED]/60 text-xs text-[#2E7D4F] font-medium flex items-center gap-1.5">
                 <Sparkles className="w-4 h-4" />
                 <span>Resep Alami Tanpa Kimia</span>
               </div>
@@ -274,14 +293,14 @@ export const LandingPage: React.FC = () => {
               viewport={{ once: true, margin: '-60px' }}
               variants={fadeUpVariant}
               transition={{ delay: 0.2 }}
-              className="bg-white rounded-3xl p-8 sm:p-10 border border-[#E8E6E1] flex flex-col justify-between shadow-xs hover:border-[#2E7D4F]/30 transition-colors"
+              className="bg-white rounded-3xl p-8 sm:p-10 border border-[#E8E8ED] flex flex-col justify-between shadow-none hover:border-[#2E7D4F]/30 transition-colors"
             >
               <div>
                 <div className="flex items-center justify-between mb-8">
                   <div className="w-12 h-12 rounded-2xl bg-[#EBF4EE] text-[#2E7D4F] flex items-center justify-center">
                     <Sparkles className="w-6 h-6 stroke-[1.5]" />
                   </div>
-                  <span className="text-2xl font-bold text-[#E8E6E1] font-mono">03</span>
+                  <span className="text-2xl font-bold text-[#E8E8ED] font-mono">03</span>
                 </div>
 
                 <h3 className="text-xl font-bold text-[#1D1D1F] tracking-tight mb-3">
@@ -293,7 +312,7 @@ export const LandingPage: React.FC = () => {
                 </p>
               </div>
 
-              <div className="mt-8 pt-4 border-t border-[#E8E6E1]/60 text-xs text-[#2E7D4F] font-medium flex items-center gap-1.5">
+              <div className="mt-8 pt-4 border-t border-[#E8E8ED]/60 text-xs text-[#2E7D4F] font-medium flex items-center gap-1.5">
                 <span>Transparansi kg Diselamatkan</span>
               </div>
             </motion.div>
@@ -304,7 +323,7 @@ export const LandingPage: React.FC = () => {
       {/* =========================================================================
           4. PRODUK UNGGULAN: BENTO GRID 4 PRODUK
           ========================================================================= */}
-      <section className="py-20 sm:py-28 md:py-32 bg-[#F2F1EC] border-y border-[#E8E6E1]">
+      <section className="py-14 sm:py-24 md:py-32 bg-[#F5F5F7]">
         <Container>
           <motion.div
             initial="hidden"
@@ -345,10 +364,10 @@ export const LandingPage: React.FC = () => {
               viewport={{ once: true, margin: '-60px' }}
               variants={fadeUpVariant}
               onClick={() => navigate(`/produk/${bentoProducts[0].id}`)}
-              className="lg:col-span-7 group bg-white rounded-3xl border border-[#E8E6E1] p-6 sm:p-8 flex flex-col justify-between shadow-xs hover:shadow-lg transition-all duration-300 cursor-pointer"
+              className="lg:col-span-7 group bg-white rounded-3xl border border-[#E8E8ED] p-6 sm:p-8 flex flex-col justify-between shadow-none hover:border-[#2E7D4F]/30 hover:shadow-xs transition-all duration-300 cursor-pointer"
             >
               <div>
-                <div className="relative rounded-2xl overflow-hidden bg-[#F2F1EC] mb-6">
+                <div className="relative rounded-2xl overflow-hidden bg-[#F5F5F7] mb-6">
                   <SmartImage
                     src={bentoProducts[0].gambar}
                     alt={bentoProducts[0].nama}
@@ -375,7 +394,7 @@ export const LandingPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="mt-6 pt-5 border-t border-[#E8E6E1]/70 flex items-center justify-between">
+              <div className="mt-6 pt-5 border-t border-[#E8E8ED]/70 flex items-center justify-between">
                 <div>
                   <span className="text-xs text-[#6E6E73] block">Asal Bahan:</span>
                   <span className="text-xs sm:text-sm font-semibold text-[#1D1D1F]">
@@ -399,9 +418,9 @@ export const LandingPage: React.FC = () => {
                   variants={fadeUpVariant}
                   transition={{ delay: idx * 0.1 }}
                   onClick={() => navigate(`/produk/${product.id}`)}
-                  className="group bg-white rounded-3xl border border-[#E8E6E1] p-5 sm:p-6 flex flex-col sm:flex-row items-center gap-5 shadow-xs hover:shadow-md transition-all duration-300 cursor-pointer"
+                  className="group bg-white rounded-3xl border border-[#E8E8ED] p-5 sm:p-6 flex flex-col sm:flex-row items-center gap-5 shadow-none hover:border-[#2E7D4F]/30 hover:shadow-xs transition-all duration-300 cursor-pointer"
                 >
-                  <div className="w-full sm:w-32 h-32 shrink-0 rounded-2xl overflow-hidden bg-[#F2F1EC]">
+                  <div className="w-full sm:w-32 h-32 shrink-0 rounded-2xl overflow-hidden bg-[#F5F5F7]">
                     <SmartImage
                       src={product.gambar}
                       alt={product.nama}
@@ -425,7 +444,7 @@ export const LandingPage: React.FC = () => {
                       </p>
                     </div>
 
-                    <div className="mt-3 pt-2.5 border-t border-[#E8E6E1]/60 flex items-center justify-between">
+                    <div className="mt-3 pt-2.5 border-t border-[#E8E8ED]/60 flex items-center justify-between">
                       <span className="text-xs font-bold text-[#1D1D1F] tabular-nums">
                         Rp{product.harga.toLocaleString('id-ID')}
                       </span>
@@ -444,18 +463,18 @@ export const LandingPage: React.FC = () => {
       {/* =========================================================================
           5. CERITA BAHAN: SATU KARTU CERITA BESAR TOMAT BENGKOK LEMBANG
           ========================================================================= */}
-      <section className="py-20 sm:py-28 md:py-32">
+      <section className="py-14 sm:py-24 md:py-32">
         <Container>
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
             variants={fadeUpVariant}
-            className="max-w-5xl mx-auto bg-white rounded-3xl sm:rounded-[36px] border border-[#E8E6E1] overflow-hidden p-6 sm:p-10 md:p-12 shadow-sm"
+            className="max-w-5xl mx-auto bg-white rounded-3xl sm:rounded-[36px] border border-[#E8E8ED] overflow-hidden p-6 sm:p-10 md:p-12 shadow-none"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               {/* Foto Bahan Besar */}
-              <div className="lg:col-span-5 rounded-2xl sm:rounded-3xl overflow-hidden bg-[#F2F1EC]">
+              <div className="lg:col-span-5 rounded-2xl sm:rounded-3xl overflow-hidden bg-[#F5F5F7]">
                 <SmartImage
                   src={tomatBengkok.gambar}
                   alt={tomatBengkok.nama}
@@ -486,7 +505,7 @@ export const LandingPage: React.FC = () => {
                 </div>
 
                 {/* Kutipan Pak Asep */}
-                <div className="relative bg-[#FAFAF7] rounded-2xl p-5 sm:p-6 border border-[#E8E6E1]">
+                <div className="relative bg-[#F5F5F7] rounded-2xl p-5 sm:p-6 border border-[#E8E8ED]">
                   <Quote className="w-8 h-8 text-[#2E7D4F]/20 mb-2" />
                   <p className="text-sm sm:text-base text-[#1D1D1F] italic leading-relaxed">
                     &ldquo;Dulu, waktu tomat bentuknya bengkok sedikit atau kulitnya retak karena
@@ -611,7 +630,7 @@ export const LandingPage: React.FC = () => {
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
             variants={fadeUpVariant}
-            className="bg-white rounded-3xl sm:rounded-[36px] border border-[#E8E6E1] p-10 sm:p-16 text-center shadow-sm"
+            className="bg-white rounded-3xl sm:rounded-[36px] border border-[#E8E8ED] p-10 sm:p-16 text-center shadow-none"
           >
             <div className="w-14 h-14 rounded-full bg-[#EBF4EE] text-[#2E7D4F] flex items-center justify-center mx-auto mb-6">
               <Sparkles className="w-7 h-7" />

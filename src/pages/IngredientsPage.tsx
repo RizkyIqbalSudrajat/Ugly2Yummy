@@ -35,10 +35,10 @@ export const IngredientsPage: React.FC = () => {
               ========================================================================= */}
           <div
             onClick={() => navigate(`/cerita-bahan/${featuredIngredient.id}`)}
-            className="md:col-span-2 lg:col-span-2 group bg-white rounded-3xl sm:rounded-[32px] border border-[#E8E6E1] overflow-hidden flex flex-col justify-between shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+            className="md:col-span-2 lg:col-span-2 group bg-white rounded-3xl sm:rounded-[32px] border border-[#E8E8ED] overflow-hidden flex flex-col justify-between shadow-none hover:shadow-xs hover:border-[#2E7D4F]/30 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
           >
             {/* Foto Besar Rasio 16:9 / 16:10 */}
-            <div className="relative w-full overflow-hidden bg-[#F2F1EC]">
+            <div className="relative w-full overflow-hidden bg-[#F5F5F7]">
               <SmartImage
                 src={featuredIngredient.gambar}
                 alt={featuredIngredient.nama}
@@ -60,7 +60,7 @@ export const IngredientsPage: React.FC = () => {
               </div>
 
               {/* Hover indicator */}
-              <div className="absolute bottom-4 right-4 z-10 w-10 h-10 rounded-full bg-white/95 backdrop-blur-md flex items-center justify-center text-[#1D1D1F] opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md">
+              <div className="absolute bottom-4 right-4 z-10 w-10 h-10 rounded-full bg-white/95 backdrop-blur-md flex items-center justify-center text-[#1D1D1F] opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-xs">
                 <ArrowUpRight className="w-5 h-5 text-[#2E7D4F]" />
               </div>
             </div>
@@ -86,7 +86,7 @@ export const IngredientsPage: React.FC = () => {
                 </p>
               </div>
 
-              <div className="mt-6 pt-5 border-t border-[#E8E6E1]/70 flex items-center justify-between text-xs sm:text-sm font-semibold text-[#2E7D4F]">
+              <div className="mt-6 pt-5 border-t border-[#E8E8ED]/70 flex items-center justify-between text-xs sm:text-sm font-semibold text-[#2E7D4F]">
                 <span>Baca kisah lengkap Pak Asep & Tomat Bengkok</span>
                 <span className="inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
                   <span>Buka Cerita</span>
@@ -103,10 +103,10 @@ export const IngredientsPage: React.FC = () => {
             <div
               key={ingredient.id}
               onClick={() => navigate(`/cerita-bahan/${ingredient.id}`)}
-              className="group bg-white rounded-3xl border border-[#E8E6E1] overflow-hidden flex flex-col justify-between shadow-xs hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+              className="group bg-white rounded-3xl border border-[#E8E8ED] overflow-hidden flex flex-col justify-between shadow-none hover:shadow-xs hover:border-[#2E7D4F]/30 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
             >
               {/* Foto Besar Rasio 4:3 */}
-              <div className="relative w-full overflow-hidden bg-[#F2F1EC]">
+              <div className="relative w-full overflow-hidden bg-[#F5F5F7]">
                 <SmartImage
                   src={ingredient.gambar}
                   alt={ingredient.nama}
@@ -117,14 +117,14 @@ export const IngredientsPage: React.FC = () => {
                 />
 
                 <div className="absolute top-3.5 left-3.5 z-10">
-                  <span className="inline-flex items-center gap-1 bg-white/95 backdrop-blur-md text-[#1D1D1F] text-xs font-semibold px-2.5 py-1 rounded-full shadow-xs border border-[#E8E6E1]">
+                  <span className="inline-flex items-center gap-1 bg-white/95 backdrop-blur-md text-[#1D1D1F] text-xs font-semibold px-2.5 py-1 rounded-full shadow-xs border border-[#E8E8ED]">
                     <span>{ingredient.emoji}</span>
                     <span>{ingredient.nama}</span>
                   </span>
                 </div>
 
                 {/* Hover indicator */}
-                <div className="absolute bottom-3.5 right-3.5 z-10 w-8 h-8 rounded-full bg-white/95 backdrop-blur-md flex items-center justify-center text-[#1D1D1F] opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-sm">
+                <div className="absolute bottom-3.5 right-3.5 z-10 w-8 h-8 rounded-full bg-white/95 backdrop-blur-md flex items-center justify-center text-[#1D1D1F] opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-xs">
                   <ArrowUpRight className="w-4 h-4 text-[#2E7D4F]" />
                 </div>
               </div>
@@ -150,7 +150,7 @@ export const IngredientsPage: React.FC = () => {
                 </div>
 
                 {/* Footer link */}
-                <div className="mt-5 pt-4 border-t border-[#E8E6E1]/70 flex items-center justify-between text-xs">
+                <div className="mt-5 pt-4 border-t border-[#E8E8ED]/70 flex items-center justify-between text-xs">
                   <span className="text-[#6E6E73]">
                     {ingredient.totalKgTerselamatkan.toLocaleString('id-ID')} kg selamat
                   </span>

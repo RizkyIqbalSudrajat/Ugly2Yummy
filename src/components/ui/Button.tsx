@@ -33,11 +33,11 @@ export const Button: React.FC<ButtonProps> = ({
   }[size];
 
   const variantStyles = {
-    primary: 'bg-[#2E7D4F] hover:bg-[#256640] text-white shadow-sm hover:shadow',
-    secondary: 'bg-[#F2F1EC] hover:bg-[#E8E6E1] text-[#1D1D1F] border border-[#E8E6E1]',
+    primary: 'bg-[#2E7D4F] hover:bg-[#256640] text-white shadow-xs',
+    secondary: 'bg-[#F5F5F7] hover:bg-[#E8E8ED] text-[#1D1D1F] border border-[#E8E8ED]',
     outline: 'border border-[#2E7D4F] text-[#2E7D4F] hover:bg-[#2E7D4F]/10',
     text: 'text-[#1D1D1F] hover:text-[#2E7D4F] hover:bg-[#1D1D1F]/5',
-    dark: 'bg-[#141414] hover:bg-black text-white shadow-sm',
+    dark: 'bg-[#141414] hover:bg-black text-white shadow-xs',
   }[variant];
 
   const widthStyle = fullWidth ? 'w-full' : '';

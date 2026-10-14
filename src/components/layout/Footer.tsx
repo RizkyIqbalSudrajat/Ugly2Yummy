@@ -4,9 +4,9 @@ import { Container } from '../ui/Container';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#F2F1EC] border-t border-[#E8E6E1] mt-20 pt-16 pb-12 text-[#6E6E73]">
+    <footer className="bg-[#F5F5F7] border-t border-[#E8E8ED] mt-20 pt-16 pb-12 text-[#6E6E73]">
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 pb-12 border-b border-[#E8E6E1]">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 pb-12 border-b border-[#E8E8ED]">
           {/* Brand Col */}
           <div className="md:col-span-5 space-y-4">
             <Link
@@ -70,7 +70,7 @@ export const Footer: React.FC = () => {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noreferrer noopener"
-                className="w-9 h-9 rounded-full bg-white border border-[#E8E6E1] flex items-center justify-center text-[#1D1D1F] hover:text-[#2E7D4F] hover:border-[#2E7D4F]/30 transition-colors text-xs font-semibold"
+                className="w-9 h-9 rounded-full bg-white border border-[#E8E8ED] flex items-center justify-center text-[#1D1D1F] hover:text-[#2E7D4F] hover:border-[#2E7D4F]/30 transition-colors text-xs font-semibold"
                 aria-label="Instagram"
               >
                 IG
@@ -79,7 +79,7 @@ export const Footer: React.FC = () => {
                 href="https://tiktok.com"
                 target="_blank"
                 rel="noreferrer noopener"
-                className="w-9 h-9 rounded-full bg-white border border-[#E8E6E1] flex items-center justify-center text-[#1D1D1F] hover:text-[#2E7D4F] hover:border-[#2E7D4F]/30 transition-colors text-xs font-semibold"
+                className="w-9 h-9 rounded-full bg-white border border-[#E8E8ED] flex items-center justify-center text-[#1D1D1F] hover:text-[#2E7D4F] hover:border-[#2E7D4F]/30 transition-colors text-xs font-semibold"
                 aria-label="TikTok"
               >
                 TT
@@ -88,16 +88,16 @@ export const Footer: React.FC = () => {
                 href="https://youtube.com"
                 target="_blank"
                 rel="noreferrer noopener"
-                className="w-9 h-9 rounded-full bg-white border border-[#E8E6E1] flex items-center justify-center text-[#1D1D1F] hover:text-[#2E7D4F] hover:border-[#2E7D4F]/30 transition-colors text-xs font-semibold"
+                className="w-9 h-9 rounded-full bg-white border border-[#E8E8ED] flex items-center justify-center text-[#1D1D1F] hover:text-[#2E7D4F] hover:border-[#2E7D4F]/30 transition-colors text-xs font-semibold"
                 aria-label="YouTube"
               >
                 YT
               </a>
               <a
-                href="https://whatsapp.com"
+                href="https://wa.me/6281234567890?text=Halo%20Ugly2Yummy%2C%20saya%20mau%20tanya%20tentang%20produknya."
                 target="_blank"
                 rel="noreferrer noopener"
-                className="w-9 h-9 rounded-full bg-white border border-[#E8E6E1] flex items-center justify-center text-[#1D1D1F] hover:text-[#2E7D4F] hover:border-[#2E7D4F]/30 transition-colors text-xs font-semibold"
+                className="w-9 h-9 rounded-full bg-white border border-[#E8E8ED] flex items-center justify-center text-[#1D1D1F] hover:text-[#2E7D4F] hover:border-[#2E7D4F]/30 transition-colors text-xs font-semibold"
                 aria-label="WhatsApp"
               >
                 WA

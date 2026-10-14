@@ -23,10 +23,10 @@ export const Card: React.FC<CardProps> = ({
     lg: 'p-8 sm:p-10',
   }[padding];
 
-  const borderStyles = border ? 'border border-[#E8E6E1]' : '';
+  const borderStyles = border ? 'border border-[#E8E8ED]' : '';
   const hoverStyles = hoverEffect
-    ? 'transition-all duration-300 hover:-translate-y-1 hover:shadow-md'
-    : 'transition-shadow duration-200';
+    ? 'transition-all duration-300 hover:-translate-y-0.5 hover:border-[#2E7D4F]/30 shadow-none'
+    : 'transition-colors duration-200 shadow-none';
 
   return (
     <div

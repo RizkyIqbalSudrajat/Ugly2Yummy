@@ -83,7 +83,7 @@ export const BuyerDashboardPage: React.FC = () => {
             <div className="shrink-0 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <Link
                 to="/dampak-saya"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#2E7D4F] hover:bg-[#256640] text-white text-sm font-semibold transition-all duration-200 shadow-sm whitespace-nowrap"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#2E7D4F] hover:bg-[#256640] text-white text-sm font-semibold transition-all duration-200 shadow-none whitespace-nowrap"
               >
                 <span>Lihat Rincian Dampak Saya</span>
                 <ArrowRight className="w-4 h-4" />
@@ -109,8 +109,8 @@ export const BuyerDashboardPage: React.FC = () => {
             </Link>
           </div>
 
-          <div className="bg-white rounded-3xl border border-[#E8E6E1] p-6 sm:p-7 shadow-xs">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-[#E8E6E1]/70">
+          <div className="bg-white rounded-3xl border border-[#E8E8ED] p-6 sm:p-7 shadow-none">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-[#E8E8ED]/70">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-2xl bg-[#EBF4EE] text-[#2E7D4F] flex items-center justify-center shrink-0">
                   <Truck className="w-6 h-6 stroke-[1.7]" />
@@ -187,10 +187,10 @@ export const BuyerDashboardPage: React.FC = () => {
               <div
                 key={ingredient.id}
                 onClick={() => navigate(`/cerita-bahan/${ingredient.id}`)}
-                className="group shrink-0 w-[260px] sm:w-[280px] bg-white rounded-3xl border border-[#E8E6E1] p-4 flex flex-col justify-between shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 cursor-pointer snap-start"
+                className="group shrink-0 w-[260px] sm:w-[280px] bg-white rounded-3xl border border-[#E8E8ED] p-4 flex flex-col justify-between shadow-none hover:shadow-xs hover:-translate-y-0.5 transition-all duration-300 cursor-pointer snap-start"
               >
                 <div>
-                  <div className="relative rounded-2xl overflow-hidden bg-[#F2F1EC] mb-3.5 aspect-[4/3]">
+                  <div className="relative rounded-2xl overflow-hidden bg-[#F5F5F7] mb-3.5 aspect-[4/3]">
                     <SmartImage
                       src={ingredient.gambar}
                       alt={ingredient.nama}
@@ -199,7 +199,7 @@ export const BuyerDashboardPage: React.FC = () => {
                       hoverZoom={true}
                       containerClassName="w-full h-full"
                     />
-                    <div className="absolute top-2.5 left-2.5 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-full text-xs font-semibold text-[#1D1D1F] flex items-center gap-1 shadow-xs">
+                    <div className="absolute top-2.5 left-2.5 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-full text-xs font-semibold text-[#1D1D1F] flex items-center gap-1 shadow-none">
                       <span>{ingredient.emoji}</span>
                       <span>{ingredient.nama}</span>
                     </div>
@@ -216,7 +216,7 @@ export const BuyerDashboardPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-[#E8E6E1]/70 flex items-center justify-between text-xs">
+                <div className="mt-4 pt-3 border-t border-[#E8E8ED]/70 flex items-center justify-between text-xs">
                   <span className="text-[#6E6E73]">Terselamatkan:</span>
                   <span className="font-bold text-[#2E7D4F]">
                     {ingredient.totalKgTerselamatkan.toLocaleString('id-ID')} kg
@@ -263,9 +263,9 @@ export const BuyerDashboardPage: React.FC = () => {
                 <div
                   key={product.id}
                   onClick={() => navigate(`/produk/${product.id}`)}
-                  className="group bg-white rounded-3xl border border-[#E8E6E1] overflow-hidden flex flex-col justify-between shadow-xs hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                  className="group bg-white rounded-3xl border border-[#E8E8ED] overflow-hidden flex flex-col justify-between shadow-none hover:shadow-xs hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
                 >
-                  <div className="relative w-full overflow-hidden bg-[#F2F1EC]">
+                  <div className="relative w-full overflow-hidden bg-[#F5F5F7]">
                     <SmartImage
                       src={product.gambar}
                       alt={product.nama}
@@ -276,7 +276,7 @@ export const BuyerDashboardPage: React.FC = () => {
                     />
 
                     <div className="absolute top-3 left-3 z-10">
-                      <span className="inline-flex items-center gap-1 bg-white/95 backdrop-blur-md text-[#2E7D4F] text-[10px] font-bold px-2.5 py-1 rounded-full shadow-xs border border-[#2E7D4F]/15">
+                      <span className="inline-flex items-center gap-1 bg-white/95 backdrop-blur-md text-[#2E7D4F] text-[10px] font-bold px-2.5 py-1 rounded-full shadow-none border border-[#2E7D4F]/15">
                         <Sparkles className="w-2.5 h-2.5 text-[#2E7D4F]" />
                         <span>{product.estimasiKgTerselamatkan} kg selamat</span>
                       </span>
@@ -293,7 +293,7 @@ export const BuyerDashboardPage: React.FC = () => {
                       </h4>
                     </div>
 
-                    <div className="mt-4 pt-3 border-t border-[#E8E6E1]/70 flex items-center justify-between">
+                    <div className="mt-4 pt-3 border-t border-[#E8E8ED]/70 flex items-center justify-between">
                       <span className="text-sm font-bold text-[#1D1D1F] tabular-nums">
                         {formattedPrice}
                       </span>

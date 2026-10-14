@@ -73,14 +73,14 @@ export const CheckoutPage: React.FC = () => {
         <div className="max-w-xl mx-auto mb-10 sm:mb-14">
           <div className="flex items-center justify-between relative">
             {/* Connecting Line */}
-            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-[#E8E6E1] -translate-y-1/2 z-0" />
+            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-[#E8E8ED] -translate-y-1/2 z-0" />
 
             {/* Step 1 */}
             <div className="relative z-10 flex flex-col items-center">
               <div className="w-8 h-8 rounded-full bg-[#2E7D4F] text-white flex items-center justify-center text-xs font-bold shadow-xs">
                 1
               </div>
-              <span className="text-[11px] font-bold text-[#1D1D1F] mt-1.5 bg-[#FAFAF7] px-1">
+              <span className="text-[11px] font-bold text-[#1D1D1F] mt-1.5 bg-[#FBFBFD] px-1">
                 Alamat
               </span>
             </div>
@@ -90,7 +90,7 @@ export const CheckoutPage: React.FC = () => {
               <div className="w-8 h-8 rounded-full bg-[#2E7D4F] text-white flex items-center justify-center text-xs font-bold shadow-xs">
                 2
               </div>
-              <span className="text-[11px] font-bold text-[#1D1D1F] mt-1.5 bg-[#FAFAF7] px-1">
+              <span className="text-[11px] font-bold text-[#1D1D1F] mt-1.5 bg-[#FBFBFD] px-1">
                 Pengiriman
               </span>
             </div>
@@ -100,7 +100,7 @@ export const CheckoutPage: React.FC = () => {
               <div className="w-8 h-8 rounded-full bg-[#2E7D4F] text-white flex items-center justify-center text-xs font-bold shadow-xs">
                 3
               </div>
-              <span className="text-[11px] font-bold text-[#1D1D1F] mt-1.5 bg-[#FAFAF7] px-1">
+              <span className="text-[11px] font-bold text-[#1D1D1F] mt-1.5 bg-[#FBFBFD] px-1">
                 Pembayaran
               </span>
             </div>
@@ -113,8 +113,8 @@ export const CheckoutPage: React.FC = () => {
               ========================================================================= */}
           <div className="lg:col-span-7 space-y-8">
             {/* 1. KARTU ALAMAT DUMMY YANG SUDAH TERISI */}
-            <div className="bg-white rounded-3xl border border-[#E8E6E1] p-6 sm:p-7 shadow-xs">
-              <div className="flex items-center justify-between pb-4 border-b border-[#E8E6E1]/70 mb-4">
+            <div className="bg-white rounded-3xl border border-[#E8E8ED] p-6 sm:p-7 shadow-none">
+              <div className="flex items-center justify-between pb-4 border-b border-[#E8E8ED]/70 mb-4">
                 <div className="flex items-center gap-2">
                   <MapPin className="w-5 h-5 text-[#2E7D4F]" />
                   <h2 className="text-base sm:text-lg font-bold text-[#1D1D1F]">
@@ -152,28 +152,28 @@ export const CheckoutPage: React.FC = () => {
                     type="text"
                     value={address.recipient}
                     onChange={(e) => setAddress({ ...address, recipient: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#E8E6E1] bg-[#FAFAF7] text-xs text-[#1D1D1F]"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#E8E8ED] bg-[#F5F5F7] text-xs text-[#1D1D1F]"
                     placeholder="Nama Penerima"
                   />
                   <input
                     type="text"
                     value={address.phone}
                     onChange={(e) => setAddress({ ...address, phone: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#E8E6E1] bg-[#FAFAF7] text-xs text-[#1D1D1F]"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#E8E8ED] bg-[#F5F5F7] text-xs text-[#1D1D1F]"
                     placeholder="No. Telepon"
                   />
                   <input
                     type="text"
                     value={address.street}
                     onChange={(e) => setAddress({ ...address, street: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#E8E6E1] bg-[#FAFAF7] text-xs text-[#1D1D1F]"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#E8E8ED] bg-[#F5F5F7] text-xs text-[#1D1D1F]"
                     placeholder="Alamat Lengkap"
                   />
                   <div className="flex justify-end pt-1">
                     <button
                       type="button"
                       onClick={() => setIsEditingAddress(false)}
-                      className="px-4 py-1.5 bg-[#2E7D4F] text-white rounded-full text-xs font-semibold"
+                      className="px-4 py-1.5 bg-[#2E7D4F] text-white rounded-full text-xs font-semibold cursor-pointer"
                     >
                       Selesai
                     </button>
@@ -183,8 +183,8 @@ export const CheckoutPage: React.FC = () => {
             </div>
 
             {/* 2. PILIHAN PENGIRIMAN (KARTU RADIO) */}
-            <div className="bg-white rounded-3xl border border-[#E8E6E1] p-6 sm:p-7 shadow-xs">
-              <div className="flex items-center gap-2 pb-4 border-b border-[#E8E6E1]/70 mb-4">
+            <div className="bg-white rounded-3xl border border-[#E8E8ED] p-6 sm:p-7 shadow-none">
+              <div className="flex items-center gap-2 pb-4 border-b border-[#E8E8ED]/70 mb-4">
                 <Truck className="w-5 h-5 text-[#2E7D4F]" />
                 <h2 className="text-base sm:text-lg font-bold text-[#1D1D1F]">
                   Pilihan Pengiriman
@@ -195,10 +195,10 @@ export const CheckoutPage: React.FC = () => {
                 {/* Option 1: Reguler */}
                 <label
                   onClick={() => setShippingMethod('reguler')}
-                  className={`p-4 rounded-2xl border-2 transition-all cursor-pointer flex flex-col justify-between ${
+                  className={`p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
                     shippingMethod === 'reguler'
                       ? 'border-[#2E7D4F] bg-[#EBF4EE]/30'
-                      : 'border-[#E8E6E1] bg-white hover:border-[#2E7D4F]/40'
+                      : 'border-[#E8E8ED] bg-white hover:border-[#2E7D4F]/40'
                   }`}
                 >
                   <div className="flex items-start justify-between">
@@ -219,10 +219,10 @@ export const CheckoutPage: React.FC = () => {
                 {/* Option 2: Instan */}
                 <label
                   onClick={() => setShippingMethod('instan')}
-                  className={`p-4 rounded-2xl border-2 transition-all cursor-pointer flex flex-col justify-between ${
+                  className={`p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
                     shippingMethod === 'instan'
                       ? 'border-[#2E7D4F] bg-[#EBF4EE]/30'
-                      : 'border-[#E8E6E1] bg-white hover:border-[#2E7D4F]/40'
+                      : 'border-[#E8E8ED] bg-white hover:border-[#2E7D4F]/40'
                   }`}
                 >
                   <div className="flex items-start justify-between">
@@ -243,8 +243,8 @@ export const CheckoutPage: React.FC = () => {
             </div>
 
             {/* 3. METODE PEMBAYARAN (KARTU RADIO) */}
-            <div className="bg-white rounded-3xl border border-[#E8E6E1] p-6 sm:p-7 shadow-xs">
-              <div className="flex items-center gap-2 pb-4 border-b border-[#E8E6E1]/70 mb-4">
+            <div className="bg-white rounded-3xl border border-[#E8E8ED] p-6 sm:p-7 shadow-none">
+              <div className="flex items-center gap-2 pb-4 border-b border-[#E8E8ED]/70 mb-4">
                 <CreditCard className="w-5 h-5 text-[#2E7D4F]" />
                 <h2 className="text-base sm:text-lg font-bold text-[#1D1D1F]">
                   Metode Pembayaran (Simulasi)
@@ -255,14 +255,14 @@ export const CheckoutPage: React.FC = () => {
                 {/* Method 1: Transfer Bank */}
                 <label
                   onClick={() => setPaymentMethod('transfer')}
-                  className={`p-4 rounded-2xl border-2 transition-all cursor-pointer flex items-center justify-between ${
+                  className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-center justify-between ${
                     paymentMethod === 'transfer'
                       ? 'border-[#2E7D4F] bg-[#EBF4EE]/30'
-                      : 'border-[#E8E6E1] bg-white hover:border-[#2E7D4F]/40'
+                      : 'border-[#E8E8ED] bg-white hover:border-[#2E7D4F]/40'
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-[#FAFAF7] border border-[#E8E6E1] flex items-center justify-center text-[#1D1D1F]">
+                    <div className="w-10 h-10 rounded-xl bg-[#F5F5F7] border border-[#E8E8ED] flex items-center justify-center text-[#1D1D1F]">
                       <Building2 className="w-5 h-5 text-[#2E7D4F]" />
                     </div>
                     <div>
@@ -276,7 +276,7 @@ export const CheckoutPage: React.FC = () => {
                   </div>
                   <div
                     className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                      paymentMethod === 'transfer' ? 'border-[#2E7D4F]' : 'border-[#E8E6E1]'
+                      paymentMethod === 'transfer' ? 'border-[#2E7D4F]' : 'border-[#E8E8ED]'
                     }`}
                   >
                     {paymentMethod === 'transfer' && (
@@ -288,14 +288,14 @@ export const CheckoutPage: React.FC = () => {
                 {/* Method 2: E-Wallet */}
                 <label
                   onClick={() => setPaymentMethod('ewallet')}
-                  className={`p-4 rounded-2xl border-2 transition-all cursor-pointer flex items-center justify-between ${
+                  className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-center justify-between ${
                     paymentMethod === 'ewallet'
                       ? 'border-[#2E7D4F] bg-[#EBF4EE]/30'
-                      : 'border-[#E8E6E1] bg-white hover:border-[#2E7D4F]/40'
+                      : 'border-[#E8E8ED] bg-white hover:border-[#2E7D4F]/40'
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-[#FAFAF7] border border-[#E8E6E1] flex items-center justify-center text-[#1D1D1F]">
+                    <div className="w-10 h-10 rounded-xl bg-[#F5F5F7] border border-[#E8E8ED] flex items-center justify-center text-[#1D1D1F]">
                       <Wallet className="w-5 h-5 text-[#2E7D4F]" />
                     </div>
                     <div>
@@ -309,7 +309,7 @@ export const CheckoutPage: React.FC = () => {
                   </div>
                   <div
                     className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                      paymentMethod === 'ewallet' ? 'border-[#2E7D4F]' : 'border-[#E8E6E1]'
+                      paymentMethod === 'ewallet' ? 'border-[#2E7D4F]' : 'border-[#E8E8ED]'
                     }`}
                   >
                     {paymentMethod === 'ewallet' && (
@@ -321,14 +321,14 @@ export const CheckoutPage: React.FC = () => {
                 {/* Method 3: COD */}
                 <label
                   onClick={() => setPaymentMethod('cod')}
-                  className={`p-4 rounded-2xl border-2 transition-all cursor-pointer flex items-center justify-between ${
+                  className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-center justify-between ${
                     paymentMethod === 'cod'
                       ? 'border-[#2E7D4F] bg-[#EBF4EE]/30'
-                      : 'border-[#E8E6E1] bg-white hover:border-[#2E7D4F]/40'
+                      : 'border-[#E8E8ED] bg-white hover:border-[#2E7D4F]/40'
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-[#FAFAF7] border border-[#E8E6E1] flex items-center justify-center text-[#1D1D1F]">
+                    <div className="w-10 h-10 rounded-xl bg-[#F5F5F7] border border-[#E8E8ED] flex items-center justify-center text-[#1D1D1F]">
                       <Banknote className="w-5 h-5 text-[#2E7D4F]" />
                     </div>
                     <div>
@@ -342,7 +342,7 @@ export const CheckoutPage: React.FC = () => {
                   </div>
                   <div
                     className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                      paymentMethod === 'cod' ? 'border-[#2E7D4F]' : 'border-[#E8E6E1]'
+                      paymentMethod === 'cod' ? 'border-[#2E7D4F]' : 'border-[#E8E8ED]'
                     }`}
                   >
                     {paymentMethod === 'cod' && (
@@ -358,11 +358,11 @@ export const CheckoutPage: React.FC = () => {
               KOLOM KANAN: RINGKASAN PESANAN & TOMBOL BAYAR SEKARANG
               ========================================================================= */}
           <div className="lg:col-span-5 lg:sticky lg:top-24">
-            <div className="bg-white rounded-3xl border border-[#E8E6E1] p-6 sm:p-8 shadow-sm space-y-6">
+            <div className="bg-white rounded-3xl border border-[#E8E8ED] p-6 sm:p-8 shadow-none space-y-6">
               <h3 className="text-lg font-bold text-[#1D1D1F]">Ringkasan Pesanan</h3>
 
               {/* Items Mini List */}
-              <div className="space-y-3 pb-5 border-b border-[#E8E6E1]/70">
+              <div className="space-y-3 pb-5 border-b border-[#E8E8ED]/70">
                 {cartItems.map((item) => (
                   <div key={item.id} className="flex items-center justify-between text-xs">
                     <div className="flex items-center gap-2">
@@ -377,7 +377,7 @@ export const CheckoutPage: React.FC = () => {
               </div>
 
               {/* Calculations */}
-              <div className="space-y-2.5 text-xs sm:text-sm text-[#6E6E73] pb-5 border-b border-[#E8E6E1]/70">
+              <div className="space-y-2.5 text-xs sm:text-sm text-[#6E6E73] pb-5 border-b border-[#E8E8ED]/70">
                 <div className="flex items-center justify-between">
                   <span>Subtotal</span>
                   <span className="text-[#1D1D1F] font-semibold tabular-nums">

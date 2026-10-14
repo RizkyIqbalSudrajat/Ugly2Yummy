@@ -56,7 +56,11 @@ export const CartPage: React.FC = () => {
   });
 
   return (
-    <div className="py-10 sm:py-16 md:py-20">
+    <div
+      className={`pt-10 sm:pt-16 md:pt-20 ${
+        cartItems.length > 0 ? 'pb-28 sm:pb-32 lg:pb-20' : 'pb-10 sm:pb-16 md:pb-20'
+      }`}
+    >
       <Container>
         {/* Back Link */}
         <div className="mb-6">
@@ -105,10 +109,10 @@ export const CartPage: React.FC = () => {
                 return (
                   <div
                     key={item.id}
-                    className="bg-white rounded-3xl border border-[#E8E6E1] p-5 sm:p-6 flex flex-col sm:flex-row items-center gap-5 shadow-xs"
+                    className="bg-white rounded-3xl border border-[#E8E8ED] p-5 sm:p-6 flex flex-col sm:flex-row items-center gap-5 shadow-none"
                   >
                     {/* Thumbnail Foto */}
-                    <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden bg-[#F2F1EC] shrink-0 border border-[#E8E6E1]/50">
+                    <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden bg-[#F5F5F7] shrink-0 border border-[#E8E8ED]/50">
                       <SmartImage
                         src={item.gambar}
                         alt={item.nama}
@@ -141,13 +145,13 @@ export const CartPage: React.FC = () => {
                       </div>
 
                       {/* Stepper Jumlah, Total per Item, dan Tombol Hapus */}
-                      <div className="pt-2 border-t border-[#E8E6E1]/60 flex items-center justify-between gap-4">
+                      <div className="pt-2 border-t border-[#E8E8ED]/60 flex items-center justify-between gap-4">
                         {/* Stepper Jumlah */}
-                        <div className="flex items-center gap-2 bg-[#FAFAF7] border border-[#E8E6E1] rounded-full p-1">
+                        <div className="flex items-center gap-2 bg-[#FBFBFD] border border-[#E8E8ED] rounded-full p-1">
                           <button
                             type="button"
                             onClick={() => updateQuantity(item.id, -1)}
-                            className="w-7 h-7 rounded-full bg-white hover:bg-[#F2F1EC] text-[#1D1D1F] flex items-center justify-center transition-colors shadow-xs cursor-pointer"
+                            className="w-7 h-7 rounded-full bg-white hover:bg-[#F5F5F7] text-[#1D1D1F] flex items-center justify-center transition-colors shadow-none cursor-pointer"
                             aria-label="Kurangi jumlah"
                           >
                             <Minus className="w-3.5 h-3.5" />
@@ -160,7 +164,7 @@ export const CartPage: React.FC = () => {
                           <button
                             type="button"
                             onClick={() => updateQuantity(item.id, 1)}
-                            className="w-7 h-7 rounded-full bg-white hover:bg-[#F2F1EC] text-[#1D1D1F] flex items-center justify-center transition-colors shadow-xs cursor-pointer"
+                            className="w-7 h-7 rounded-full bg-white hover:bg-[#F5F5F7] text-[#1D1D1F] flex items-center justify-center transition-colors shadow-none cursor-pointer"
                             aria-label="Tambah jumlah"
                           >
                             <Plus className="w-3.5 h-3.5" />
@@ -194,13 +198,13 @@ export const CartPage: React.FC = () => {
                 KOLOM KANAN: KARTU RINGKASAN (DI HP PINDAH KE BAWAH)
                 ========================================================================= */}
             <div className="lg:col-span-5 lg:sticky lg:top-24">
-              <div className="bg-white rounded-3xl border border-[#E8E6E1] p-6 sm:p-8 shadow-sm space-y-6">
+              <div className="bg-white rounded-3xl border border-[#E8E8ED] p-6 sm:p-8 shadow-none space-y-6">
                 <h2 className="text-lg font-bold text-[#1D1D1F] tracking-tight">
                   Ringkasan Belanja
                 </h2>
 
                 {/* Rincian Angka */}
-                <div className="space-y-3 text-sm text-[#6E6E73] pb-6 border-b border-[#E8E6E1]/70">
+                <div className="space-y-3 text-sm text-[#6E6E73] pb-6 border-b border-[#E8E8ED]/70">
                   <div className="flex items-center justify-between">
                     <span>Subtotal Produk</span>
                     <span className="text-[#1D1D1F] font-semibold tabular-nums">
@@ -264,8 +268,8 @@ export const CartPage: React.FC = () => {
           /* =========================================================================
               TAMPILAN KERANJANG KOSONG YANG RAPI
               ========================================================================= */
-          <div className="bg-white rounded-3xl border border-[#E8E6E1] p-10 sm:p-16 text-center max-w-lg mx-auto shadow-xs">
-            <div className="w-16 h-16 rounded-full bg-[#F2F1EC] text-[#6E6E73] flex items-center justify-center mx-auto mb-6">
+          <div className="bg-white rounded-3xl border border-[#E8E8ED] p-10 sm:p-16 text-center max-w-lg mx-auto shadow-none">
+            <div className="w-16 h-16 rounded-full bg-[#F5F5F7] text-[#6E6E73] flex items-center justify-center mx-auto mb-6">
               <ShoppingBag className="w-8 h-8 stroke-[1.5]" />
             </div>
 
@@ -299,6 +303,30 @@ export const CartPage: React.FC = () => {
           </div>
         )}
       </Container>
+
+      {/* Bar Sticky Checkout di Layar HP (di bawah breakpoint lg) */}
+      {cartItems.length > 0 && (
+        <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/85 backdrop-blur-md border-t border-[#E8E8ED] px-4 py-3 sm:px-6 shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
+          <div className="max-w-lg mx-auto flex items-center justify-between gap-4">
+            <div>
+              <span className="text-[11px] text-[#6E6E73] block leading-tight">Total Tagihan</span>
+              <span className="text-lg sm:text-xl font-extrabold text-[#1D1D1F] tabular-nums">
+                {formattedGrandTotal}
+              </span>
+            </div>
+            <Button
+              to="/checkout"
+              variant="primary"
+              size="md"
+              className="px-6 py-2.5 font-semibold"
+              icon={<ArrowRight className="w-4 h-4" />}
+              iconPosition="right"
+            >
+              Checkout
+            </Button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

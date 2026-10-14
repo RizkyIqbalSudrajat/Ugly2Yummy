@@ -26,10 +26,10 @@ export const IngredientCard: React.FC<IngredientCardProps> = ({
   return (
     <div
       onClick={handleCardClick}
-      className={`group relative bg-white rounded-2xl sm:rounded-3xl border border-[#E8E6E1] overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer ${className}`}
+      className={`group relative bg-white rounded-2xl sm:rounded-3xl border border-[#E8E8ED] overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-0.5 hover:border-[#2E7D4F]/30 shadow-none hover:shadow-xs cursor-pointer ${className}`}
     >
       {/* Visual Image */}
-      <div className="relative w-full overflow-hidden bg-[#F2F1EC]">
+      <div className="relative w-full overflow-hidden bg-[#F5F5F7]">
         <SmartImage
           src={ingredient.gambar}
           alt={ingredient.nama}
@@ -40,7 +40,7 @@ export const IngredientCard: React.FC<IngredientCardProps> = ({
         />
 
         {/* Emoji Badge Overlay */}
-        <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full border border-[#E8E6E1] shadow-xs">
+        <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full border border-[#E8E8ED] shadow-xs">
           <span className="text-base leading-none">{ingredient.emoji}</span>
           <span className="text-xs font-semibold text-[#1D1D1F]">
             {ingredient.nama}
@@ -69,7 +69,7 @@ export const IngredientCard: React.FC<IngredientCardProps> = ({
           </div>
 
           {/* Reason considered 'ugly' */}
-          <div className="bg-[#FAF8F5] border border-[#E8E6E1]/80 rounded-xl p-3 mb-3">
+          <div className="bg-[#F5F5F7] border border-[#E8E8ED] rounded-xl p-3 mb-3">
             <div className="text-[11px] font-semibold uppercase tracking-wider text-[#C86218] mb-1">
               Cap &quot;Tak Sempurna&quot;:
             </div>
@@ -86,7 +86,7 @@ export const IngredientCard: React.FC<IngredientCardProps> = ({
         </div>
 
         {/* Story link footer */}
-        <div className="mt-5 pt-3 border-t border-[#E8E6E1]/60 flex items-center justify-between">
+        <div className="mt-5 pt-3 border-t border-[#E8E8ED]/60 flex items-center justify-between">
           <span className="text-xs text-[#6E6E73]">Baca kisah lengkap</span>
           <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#2E7D4F] group-hover:translate-x-0.5 transition-transform">
             <span>Buka Cerita</span>

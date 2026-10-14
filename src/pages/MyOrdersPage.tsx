@@ -160,8 +160,8 @@ export const MyOrdersPage: React.FC = () => {
               onClick={() => setFilter(tab)}
               className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
                 filter === tab
-                  ? 'bg-[#1D1D1F] text-white shadow-xs'
-                  : 'bg-white text-[#6E6E73] border border-[#E8E6E1] hover:text-[#1D1D1F] hover:bg-[#F2F1EC]'
+                  ? 'bg-[#1D1D1F] text-white shadow-none'
+                  : 'bg-white text-[#6E6E73] border border-[#E8E8ED] hover:text-[#1D1D1F] hover:bg-[#F5F5F7]'
               }`}
             >
               {tab}
@@ -177,10 +177,10 @@ export const MyOrdersPage: React.FC = () => {
             return (
               <div
                 key={order.id}
-                className="bg-white rounded-3xl border border-[#E8E6E1] p-6 sm:p-8 shadow-xs space-y-6"
+                className="bg-white rounded-3xl border border-[#E8E8ED] p-6 sm:p-8 shadow-none space-y-6"
               >
                 {/* Header Pesanan */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-[#E8E6E1]/70">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-[#E8E8ED]/70">
                   <div className="flex items-center gap-3">
                     <span className="font-mono text-sm font-bold text-[#1D1D1F]">
                       {order.orderNumber}
@@ -193,7 +193,7 @@ export const MyOrdersPage: React.FC = () => {
                       className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold ${
                         isDelivering
                           ? 'bg-[#EBF4EE] text-[#2E7D4F]'
-                          : 'bg-[#F2F1EC] text-[#1D1D1F]'
+                          : 'bg-[#F5F5F7] text-[#1D1D1F]'
                       }`}
                     >
                       {isDelivering ? (
@@ -218,7 +218,7 @@ export const MyOrdersPage: React.FC = () => {
 
                     return (
                       <div key={idx} className="flex items-center gap-4">
-                        <div className="w-16 h-16 rounded-2xl overflow-hidden bg-[#F2F1EC] shrink-0 border border-[#E8E6E1]/50">
+                        <div className="w-16 h-16 rounded-2xl overflow-hidden bg-[#F5F5F7] shrink-0 border border-[#E8E8ED]/50">
                           <SmartImage
                             src={prodData?.gambar}
                             alt={p.name}
@@ -248,7 +248,7 @@ export const MyOrdersPage: React.FC = () => {
                 </div>
 
                 {/* Delivery Note & Footer Summary */}
-                <div className="pt-5 border-t border-[#E8E6E1]/70 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div className="pt-5 border-t border-[#E8E8ED]/70 flex flex-col md:flex-row md:items-center justify-between gap-4">
                   <div className="flex items-start gap-2.5 text-xs text-[#6E6E73] max-w-lg">
                     {isDelivering ? (
                       <Truck className="w-4 h-4 text-[#2E7D4F] shrink-0 mt-0.5" />

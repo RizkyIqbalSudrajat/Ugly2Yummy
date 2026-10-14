@@ -25,13 +25,14 @@ import { MyOrdersPage } from './pages/MyOrdersPage';
 import { MyImpactPage } from './pages/MyImpactPage';
 import { ProfilePage } from './pages/ProfilePage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { WhatsAppButton } from './components/layout/WhatsAppButton';
 
 export default function App() {
   return (
     <AuthProvider>
       <HashRouter>
         <ScrollToTop />
-        <div className="min-h-screen flex flex-col bg-[#FAFAF7] text-[#1D1D1F] selection:bg-[#2E7D4F]/20 selection:text-[#2E7D4F]">
+        <div className="min-h-screen flex flex-col bg-[#FBFBFD] text-[#1D1D1F] selection:bg-[#2E7D4F]/20 selection:text-[#2E7D4F]">
           {/* Sticky Blur Navbar */}
           <Navbar />
 
@@ -60,6 +61,9 @@ export default function App() {
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </main>
+
+          {/* Floating WhatsApp Action */}
+          <WhatsAppButton />
 
           {/* Minimalist Brand Footer */}
           <Footer />

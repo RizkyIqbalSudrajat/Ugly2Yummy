@@ -39,9 +39,13 @@ export const AuthDemoPage: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // PRD: Kedua tombol tidak memvalidasi apa pun: langsung ubah status menjadi sudah login, lalu pindah ke Beranda Pembeli.
     loginDemo();
-    navigate('/beranda');
+    const returnUrl = (location.state as { returnUrl?: string } | null)?.returnUrl;
+    if (returnUrl) {
+      navigate(returnUrl);
+    } else {
+      navigate('/beranda');
+    }
   };
 
   const handleToggle = (newMode: 'masuk' | 'daftar') => {
@@ -57,7 +61,7 @@ export const AuthDemoPage: React.FC = () => {
               KOLOM KIRI (DESKTOP): FOTO BAHAN UGLY BESAR DENGAN KALIMAT
               "Setiap pembelianmu menyelamatkan pangan."
               ========================================================================= */}
-          <div className="hidden lg:flex lg:col-span-6 relative rounded-3xl overflow-hidden bg-[#1D1D1F] min-h-[580px] flex-col justify-between p-8 xl:p-10 border border-[#E8E6E1]/50 shadow-md">
+          <div className="hidden lg:flex lg:col-span-6 relative rounded-3xl overflow-hidden bg-[#1D1D1F] min-h-[580px] flex-col justify-between p-8 xl:p-10 border border-[#E8E8ED]/50 shadow-none">
             {/* Background Image: Ugly Produce with Scrim */}
             <div className="absolute inset-0 z-0">
               <SmartImage
@@ -109,9 +113,9 @@ export const AuthDemoPage: React.FC = () => {
               KOLOM KANAN: KARTU FORM YANG BERSIH
               ========================================================================= */}
           <div className="lg:col-span-6 flex flex-col justify-center">
-            <div className="bg-white rounded-3xl border border-[#E8E6E1] p-6 sm:p-10 shadow-sm max-w-lg mx-auto w-full">
+            <div className="bg-white rounded-3xl border border-[#E8E8ED] p-6 sm:p-10 shadow-none max-w-lg mx-auto w-full">
               {/* Toggle Segmented Control: "Masuk" dan "Daftar" */}
-              <div className="p-1 bg-[#F2F1EC] rounded-full flex items-center mb-8 border border-[#E8E6E1]">
+              <div className="p-1 bg-[#F5F5F7] rounded-full flex items-center mb-8 border border-[#E8E8ED]">
                 <button
                   type="button"
                   onClick={() => handleToggle('masuk')}
@@ -165,7 +169,7 @@ export const AuthDemoPage: React.FC = () => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Nadia Putri"
-                        className="w-full pl-10 pr-4 py-3 rounded-2xl border border-[#E8E6E1] bg-[#FAFAF7] text-sm text-[#1D1D1F] placeholder-[#6E6E73]/50 focus:border-[#2E7D4F] focus:bg-white focus:ring-2 focus:ring-[#2E7D4F]/15 outline-none transition-all"
+                        className="w-full pl-10 pr-4 py-3 rounded-2xl border border-[#E8E8ED] bg-[#F5F5F7] text-sm text-[#1D1D1F] placeholder-[#6E6E73]/50 focus:border-[#2E7D4F] focus:bg-white focus:ring-2 focus:ring-[#2E7D4F]/15 outline-none transition-all"
                       />
                     </div>
                   </div>
@@ -185,7 +189,7 @@ export const AuthDemoPage: React.FC = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="nadia@example.com"
-                      className="w-full pl-10 pr-4 py-3 rounded-2xl border border-[#E8E6E1] bg-[#FAFAF7] text-sm text-[#1D1D1F] placeholder-[#6E6E73]/50 focus:border-[#2E7D4F] focus:bg-white focus:ring-2 focus:ring-[#2E7D4F]/15 outline-none transition-all"
+                      className="w-full pl-10 pr-4 py-3 rounded-2xl border border-[#E8E8ED] bg-[#F5F5F7] text-sm text-[#1D1D1F] placeholder-[#6E6E73]/50 focus:border-[#2E7D4F] focus:bg-white focus:ring-2 focus:ring-[#2E7D4F]/15 outline-none transition-all"
                     />
                   </div>
                 </div>
@@ -209,7 +213,7 @@ export const AuthDemoPage: React.FC = () => {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="••••••••"
-                      className="w-full pl-10 pr-4 py-3 rounded-2xl border border-[#E8E6E1] bg-[#FAFAF7] text-sm text-[#1D1D1F] placeholder-[#6E6E73]/50 focus:border-[#2E7D4F] focus:bg-white focus:ring-2 focus:ring-[#2E7D4F]/15 outline-none transition-all"
+                      className="w-full pl-10 pr-4 py-3 rounded-2xl border border-[#E8E8ED] bg-[#F5F5F7] text-sm text-[#1D1D1F] placeholder-[#6E6E73]/50 focus:border-[#2E7D4F] focus:bg-white focus:ring-2 focus:ring-[#2E7D4F]/15 outline-none transition-all"
                     />
                   </div>
                 </div>
@@ -248,7 +252,7 @@ export const AuthDemoPage: React.FC = () => {
               </form>
 
               {/* Teks Kecil di Bawah Form */}
-              <div className="mt-6 pt-5 border-t border-[#E8E6E1] text-center space-y-1">
+              <div className="mt-6 pt-5 border-t border-[#E8E8ED] text-center space-y-1">
                 <p className="text-xs text-[#6E6E73] flex items-center justify-center gap-1.5">
                   <ShieldCheck className="w-3.5 h-3.5 text-[#2E7D4F]" />
                   <span>Ini prototype — login hanya simulasi.</span>

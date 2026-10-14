@@ -17,9 +17,9 @@ export const ProfilePage: React.FC = () => {
   return (
     <div className="py-16 sm:py-24">
       <Container size="narrow">
-        <div className="bg-white rounded-3xl border border-[#E8E6E1] p-8 sm:p-12 shadow-xs">
-          <div className="flex flex-col sm:flex-row items-center gap-6 pb-8 border-b border-[#E8E6E1]">
-            <div className="w-20 h-20 rounded-full bg-[#2E7D4F] text-white flex items-center justify-center font-bold text-2xl shadow-sm">
+        <div className="bg-white rounded-3xl border border-[#E8E8ED] p-8 sm:p-12 shadow-none">
+          <div className="flex flex-col sm:flex-row items-center gap-6 pb-8 border-b border-[#E8E8ED]">
+            <div className="w-20 h-20 rounded-full bg-[#2E7D4F] text-white flex items-center justify-center font-bold text-2xl shadow-none">
               {user ? user.nama.charAt(0) : 'N'}
             </div>
             <div className="text-center sm:text-left flex-1">
@@ -41,7 +41,7 @@ export const ProfilePage: React.FC = () => {
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="p-4 rounded-2xl bg-[#FAFAF7] border border-[#E8E6E1] flex items-center gap-3">
+              <div className="p-4 rounded-2xl bg-[#F5F5F7] border border-[#E8E8ED] flex items-center gap-3">
                 <Mail className="w-5 h-5 text-[#6E6E73]" />
                 <div>
                   <span className="text-[11px] text-[#6E6E73] block">Email</span>
@@ -51,7 +51,7 @@ export const ProfilePage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="p-4 rounded-2xl bg-[#FAFAF7] border border-[#E8E6E1] flex items-center gap-3">
+              <div className="p-4 rounded-2xl bg-[#F5F5F7] border border-[#E8E8ED] flex items-center gap-3">
                 <MapPin className="w-5 h-5 text-[#6E6E73]" />
                 <div>
                   <span className="text-[11px] text-[#6E6E73] block">Kota Pengiriman</span>
@@ -61,7 +61,7 @@ export const ProfilePage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="p-4 rounded-2xl bg-[#FAFAF7] border border-[#E8E6E1] flex items-center gap-3">
+              <div className="p-4 rounded-2xl bg-[#F5F5F7] border border-[#E8E8ED] flex items-center gap-3">
                 <Calendar className="w-5 h-5 text-[#6E6E73]" />
                 <div>
                   <span className="text-[11px] text-[#6E6E73] block">Bergabung Sejak</span>
@@ -83,7 +83,7 @@ export const ProfilePage: React.FC = () => {
             </div>
           </div>
 
-          <div className="pt-6 border-t border-[#E8E6E1] flex flex-wrap items-center justify-between gap-4">
+          <div className="pt-6 border-t border-[#E8E8ED] flex flex-wrap items-center justify-between gap-4">
             <Button to="/beranda" variant="secondary" size="md">
               Kembali ke Beranda
             </Button>

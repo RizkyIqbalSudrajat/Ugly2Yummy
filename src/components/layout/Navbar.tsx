@@ -29,6 +29,20 @@ export const Navbar: React.FC = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const [badgeBouncing, setBadgeBouncing] = useState(false);
+  const prevCartCountRef = useRef(cartCount);
+
+  // Animate badge whenever cartCount increases
+  useEffect(() => {
+    if (cartCount > prevCartCountRef.current) {
+      setBadgeBouncing(true);
+      const timer = setTimeout(() => setBadgeBouncing(false), 400);
+      prevCartCountRef.current = cartCount;
+      return () => clearTimeout(timer);
+    }
+    prevCartCountRef.current = cartCount;
+  }, [cartCount]);
+
   const handleLogout = () => {
     logout();
     setProfileDropdownOpen(false);
@@ -41,15 +55,15 @@ export const Navbar: React.FC = () => {
     }`;
 
   return (
-    <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-[#FAFAF7]/85 border-b border-[#E8E6E1]/80 transition-all">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
+    <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-white/80 border-b border-[#E8E8ED]/70 transition-all">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 h-[52px] sm:h-14 flex items-center justify-between gap-4">
         {/* Zone 1: Logo */}
         <Link
           to={isLoggedIn ? '/beranda' : '/'}
-          className="text-xl sm:text-2xl font-bold tracking-tight text-[#1D1D1F] select-none flex items-center gap-1 group"
+          className="text-lg sm:text-xl font-bold tracking-tight text-[#1D1D1F] select-none flex items-center gap-1 group"
         >
           <span>Ugly</span>
-          <span className="text-[#2E7D4F] font-extrabold group-hover:scale-110 transition-transform inline-block">
+          <span className="text-[#2E7D4F] font-extrabold group-hover:scale-105 transition-transform inline-block">
             2
           </span>
           <span>Yummy</span>
@@ -86,85 +100,87 @@ export const Navbar: React.FC = () => {
 
         {/* Zone 3: Actions (Desktop) */}
         <div className="hidden md:flex items-center gap-4">
-          {isLoggedIn ? (
-            <>
-              {/* Shopping Bag Button with Badge */}
-              <Link
-                to="/keranjang"
-                className="relative p-2.5 rounded-full text-[#1D1D1F] hover:bg-[#F2F1EC] transition-colors flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E7D4F]"
-                aria-label="Keranjang belanja"
+          {/* Shopping Bag Button with Badge (selalu tampil) */}
+          <Link
+            to="/keranjang"
+            className="relative p-2.5 rounded-full text-[#1D1D1F] hover:bg-[#F5F5F7] transition-colors flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E7D4F]"
+            aria-label="Keranjang belanja"
+          >
+            <ShoppingBag className="w-5 h-5 text-[#1D1D1F]" />
+            {cartCount > 0 && (
+              <span
+                className={`absolute -top-1 -right-1 bg-[#2E7D4F] text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-xs transition-transform duration-300 ease-out ${
+                  badgeBouncing ? 'scale-125 ring-2 ring-[#2E7D4F]/30' : 'scale-100'
+                }`}
               >
-                <ShoppingBag className="w-5 h-5 text-[#1D1D1F]" />
-                {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-[#2E7D4F] text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-xs">
-                    {cartCount}
-                  </span>
-                )}
-              </Link>
+                {cartCount}
+              </span>
+            )}
+          </Link>
 
-              {/* Profile Avatar & Dropdown */}
-              <div className="relative" ref={dropdownRef}>
-                <button
-                  onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
-                  className="flex items-center gap-2 p-1.5 pl-2.5 rounded-full bg-[#F2F1EC] hover:bg-[#E8E6E1] transition-colors text-xs font-medium text-[#1D1D1F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E7D4F] cursor-pointer"
-                  aria-expanded={profileDropdownOpen}
-                >
-                  <span className="max-w-[100px] truncate">{user?.nama.split(' ')[0]}</span>
-                  <div className="w-7 h-7 rounded-full bg-[#2E7D4F] text-white flex items-center justify-center font-semibold text-xs shadow-xs">
-                    {user?.nama.charAt(0)}
-                  </div>
-                  <ChevronDown className="w-3.5 h-3.5 text-[#6E6E73]" />
-                </button>
+          {isLoggedIn ? (
+            /* Profile Avatar & Dropdown */
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
+                className="flex items-center gap-2 p-1.5 pl-2.5 rounded-full bg-[#F5F5F7] hover:bg-[#E8E8ED] transition-colors text-xs font-medium text-[#1D1D1F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E7D4F] cursor-pointer"
+                aria-expanded={profileDropdownOpen}
+              >
+                <span className="max-w-[100px] truncate">{user?.nama.split(' ')[0]}</span>
+                <div className="w-7 h-7 rounded-full bg-[#2E7D4F] text-white flex items-center justify-center font-semibold text-xs shadow-xs">
+                  {user?.nama.charAt(0)}
+                </div>
+                <ChevronDown className="w-3.5 h-3.5 text-[#6E6E73]" />
+              </button>
 
-                {/* Dropdown Menu */}
-                {profileDropdownOpen && (
-                  <div className="absolute right-0 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-[#E8E6E1] py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-                    <div className="px-4 py-2.5 border-b border-[#E8E6E1]/70">
-                      <p className="text-xs font-semibold text-[#1D1D1F]">{user?.nama}</p>
-                      <p className="text-[11px] text-[#6E6E73] truncate">{user?.email}</p>
-                      <div className="mt-1.5 flex items-center gap-1 text-[10px] font-medium text-[#2E7D4F]">
-                        <Sparkles className="w-3 h-3" />
-                        <span>3,2 kg diselamatkan</span>
-                      </div>
-                    </div>
-
-                    <div className="py-1">
-                      <Link
-                        to="/dampak-saya"
-                        className="flex items-center gap-2.5 px-4 py-2 text-xs text-[#1D1D1F] hover:bg-[#F2F1EC] transition-colors"
-                      >
-                        <Sparkles className="w-4 h-4 text-[#2E7D4F]" />
-                        <span>Dampak Saya</span>
-                      </Link>
-                      <Link
-                        to="/pesanan-saya"
-                        className="flex items-center gap-2.5 px-4 py-2 text-xs text-[#1D1D1F] hover:bg-[#F2F1EC] transition-colors"
-                      >
-                        <Package className="w-4 h-4 text-[#6E6E73]" />
-                        <span>Pesanan Saya</span>
-                      </Link>
-                      <Link
-                        to="/profil"
-                        className="flex items-center gap-2.5 px-4 py-2 text-xs text-[#1D1D1F] hover:bg-[#F2F1EC] transition-colors"
-                      >
-                        <User className="w-4 h-4 text-[#6E6E73]" />
-                        <span>Profil Akun</span>
-                      </Link>
-                    </div>
-
-                    <div className="pt-1 border-t border-[#E8E6E1]/70">
-                      <button
-                        onClick={handleLogout}
-                        className="w-full flex items-center gap-2.5 px-4 py-2 text-xs text-red-600 hover:bg-red-50 transition-colors text-left cursor-pointer"
-                      >
-                        <LogOut className="w-4 h-4 text-red-500" />
-                        <span>Keluar</span>
-                      </button>
+              {/* Dropdown Menu */}
+              {profileDropdownOpen && (
+                <div className="absolute right-0 mt-2 w-56 bg-white rounded-2xl shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-[#E8E8ED] py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                  <div className="px-4 py-2.5 border-b border-[#E8E8ED]/70">
+                    <p className="text-xs font-semibold text-[#1D1D1F]">{user?.nama}</p>
+                    <p className="text-[11px] text-[#6E6E73] truncate">{user?.email}</p>
+                    <div className="mt-1.5 flex items-center gap-1 text-[10px] font-medium text-[#2E7D4F]">
+                      <Sparkles className="w-3 h-3" />
+                      <span>3,2 kg diselamatkan</span>
                     </div>
                   </div>
-                )}
-              </div>
-            </>
+
+                  <div className="py-1">
+                    <Link
+                      to="/dampak-saya"
+                      className="flex items-center gap-2.5 px-4 py-2 text-xs text-[#1D1D1F] hover:bg-[#F5F5F7] transition-colors"
+                    >
+                      <Sparkles className="w-4 h-4 text-[#2E7D4F]" />
+                      <span>Dampak Saya</span>
+                    </Link>
+                    <Link
+                      to="/pesanan-saya"
+                      className="flex items-center gap-2.5 px-4 py-2 text-xs text-[#1D1D1F] hover:bg-[#F5F5F7] transition-colors"
+                    >
+                      <Package className="w-4 h-4 text-[#6E6E73]" />
+                      <span>Pesanan Saya</span>
+                    </Link>
+                    <Link
+                      to="/profil"
+                      className="flex items-center gap-2.5 px-4 py-2 text-xs text-[#1D1D1F] hover:bg-[#F5F5F7] transition-colors"
+                    >
+                      <User className="w-4 h-4 text-[#6E6E73]" />
+                      <span>Profil Akun</span>
+                    </Link>
+                  </div>
+
+                  <div className="pt-1 border-t border-[#E8E8ED]/70">
+                    <button
+                      onClick={handleLogout}
+                      className="w-full flex items-center gap-2.5 px-4 py-2 text-xs text-red-600 hover:bg-red-50 transition-colors text-left cursor-pointer"
+                    >
+                      <LogOut className="w-4 h-4 text-red-500" />
+                      <span>Keluar</span>
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
           ) : (
             <Button to="/masuk" variant="primary" size="sm">
               Masuk
@@ -172,26 +188,28 @@ export const Navbar: React.FC = () => {
           )}
         </div>
 
-        {/* Mobile Action & Hamburger Button */}
+        {/* Mobile Action & Hamburger Button (selalu tampil keranjang di sebelah hamburger) */}
         <div className="flex md:hidden items-center gap-2">
-          {isLoggedIn && (
-            <Link
-              to="/keranjang"
-              className="relative p-2 rounded-full text-[#1D1D1F] hover:bg-[#F2F1EC] transition-colors"
-              aria-label="Keranjang belanja"
-            >
-              <ShoppingBag className="w-5 h-5 text-[#1D1D1F]" />
-              {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#2E7D4F] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
-                  {cartCount}
-                </span>
-              )}
-            </Link>
-          )}
+          <Link
+            to="/keranjang"
+            className="relative p-2 rounded-full text-[#1D1D1F] hover:bg-[#F5F5F7] transition-colors"
+            aria-label="Keranjang belanja"
+          >
+            <ShoppingBag className="w-5 h-5 text-[#1D1D1F]" />
+            {cartCount > 0 && (
+              <span
+                className={`absolute -top-1 -right-1 bg-[#2E7D4F] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center transition-transform duration-300 ease-out ${
+                  badgeBouncing ? 'scale-125' : 'scale-100'
+                }`}
+              >
+                {cartCount}
+              </span>
+            )}
+          </Link>
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-full text-[#1D1D1F] hover:bg-[#F2F1EC] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E7D4F]"
+            className="p-2 rounded-full text-[#1D1D1F] hover:bg-[#F5F5F7] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E7D4F]"
             aria-label={mobileMenuOpen ? 'Tutup menu' : 'Buka menu'}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -201,9 +219,9 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-[#E8E6E1] bg-[#FAFAF7] px-5 py-6 space-y-4 shadow-xl animate-in slide-in-from-top-2 duration-200">
+        <div className="md:hidden border-t border-[#E8E8ED]/70 bg-white/95 backdrop-blur-md px-5 py-6 space-y-4 shadow-sm animate-in slide-in-from-top-2 duration-200">
           {isLoggedIn && (
-            <div className="p-3.5 bg-white rounded-2xl border border-[#E8E6E1] flex items-center gap-3">
+            <div className="p-3.5 bg-white rounded-2xl border border-[#E8E8ED] flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-[#2E7D4F] text-white flex items-center justify-center font-bold text-sm">
                 {user?.nama.charAt(0)}
               </div>
@@ -219,31 +237,31 @@ export const Navbar: React.FC = () => {
               <>
                 <Link
                   to="/beranda"
-                  className="px-3 py-2.5 rounded-xl text-sm font-medium text-[#1D1D1F] hover:bg-[#F2F1EC]"
+                  className="px-3 py-2.5 rounded-xl text-sm font-medium text-[#1D1D1F] hover:bg-[#F5F5F7]"
                 >
                   Beranda
                 </Link>
                 <Link
                   to="/produk"
-                  className="px-3 py-2.5 rounded-xl text-sm font-medium text-[#1D1D1F] hover:bg-[#F2F1EC]"
+                  className="px-3 py-2.5 rounded-xl text-sm font-medium text-[#1D1D1F] hover:bg-[#F5F5F7]"
                 >
                   Katalog Produk
                 </Link>
                 <Link
                   to="/cerita-bahan"
-                  className="px-3 py-2.5 rounded-xl text-sm font-medium text-[#1D1D1F] hover:bg-[#F2F1EC]"
+                  className="px-3 py-2.5 rounded-xl text-sm font-medium text-[#1D1D1F] hover:bg-[#F5F5F7]"
                 >
                   Cerita Bahan
                 </Link>
                 <Link
                   to="/pesanan-saya"
-                  className="px-3 py-2.5 rounded-xl text-sm font-medium text-[#1D1D1F] hover:bg-[#F2F1EC]"
+                  className="px-3 py-2.5 rounded-xl text-sm font-medium text-[#1D1D1F] hover:bg-[#F5F5F7]"
                 >
                   Pesanan Saya
                 </Link>
                 <Link
                   to="/dampak-saya"
-                  className="px-3 py-2.5 rounded-xl text-sm font-medium text-[#1D1D1F] hover:bg-[#F2F1EC] flex items-center justify-between"
+                  className="px-3 py-2.5 rounded-xl text-sm font-medium text-[#1D1D1F] hover:bg-[#F5F5F7] flex items-center justify-between"
                 >
                   <span>Dampak Saya</span>
                   <span className="text-xs font-semibold text-[#2E7D4F] bg-[#EBF4EE] px-2 py-0.5 rounded-full">
@@ -252,7 +270,7 @@ export const Navbar: React.FC = () => {
                 </Link>
                 <Link
                   to="/profil"
-                  className="px-3 py-2.5 rounded-xl text-sm font-medium text-[#1D1D1F] hover:bg-[#F2F1EC]"
+                  className="px-3 py-2.5 rounded-xl text-sm font-medium text-[#1D1D1F] hover:bg-[#F5F5F7]"
                 >
                   Profil Akun
                 </Link>
@@ -261,13 +279,13 @@ export const Navbar: React.FC = () => {
               <>
                 <Link
                   to="/produk"
-                  className="px-3 py-2.5 rounded-xl text-sm font-medium text-[#1D1D1F] hover:bg-[#F2F1EC]"
+                  className="px-3 py-2.5 rounded-xl text-sm font-medium text-[#1D1D1F] hover:bg-[#F5F5F7]"
                 >
                   Katalog Produk
                 </Link>
                 <Link
                   to="/cerita-bahan"
-                  className="px-3 py-2.5 rounded-xl text-sm font-medium text-[#1D1D1F] hover:bg-[#F2F1EC]"
+                  className="px-3 py-2.5 rounded-xl text-sm font-medium text-[#1D1D1F] hover:bg-[#F5F5F7]"
                 >
                   Cerita Bahan
                 </Link>
@@ -275,7 +293,7 @@ export const Navbar: React.FC = () => {
             )}
           </nav>
 
-          <div className="pt-3 border-t border-[#E8E6E1]">
+          <div className="pt-3 border-t border-[#E8E8ED]">
             {isLoggedIn ? (
               <button
                 onClick={handleLogout}

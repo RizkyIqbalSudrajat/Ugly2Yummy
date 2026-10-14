@@ -11,8 +11,8 @@ export const NotFoundPage: React.FC = () => {
   return (
     <div className="py-20 sm:py-32">
       <Container size="narrow">
-        <div className="bg-white rounded-3xl sm:rounded-[36px] border border-[#E8E6E1] p-10 sm:p-16 text-center max-w-lg mx-auto shadow-xs space-y-6">
-          <div className="w-16 h-16 rounded-full bg-[#F2F1EC] text-[#2E7D4F] flex items-center justify-center mx-auto">
+        <div className="bg-white rounded-3xl sm:rounded-[36px] border border-[#E8E8ED] p-10 sm:p-16 text-center max-w-lg mx-auto shadow-none space-y-6">
+          <div className="w-16 h-16 rounded-full bg-[#F5F5F7] text-[#2E7D4F] flex items-center justify-center mx-auto">
             <Compass className="w-8 h-8 stroke-[1.5]" />
           </div>
 

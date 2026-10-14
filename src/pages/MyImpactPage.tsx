@@ -46,8 +46,8 @@ export const MyImpactPage: React.FC = () => {
         {/* 4 Stat Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {/* Stat 1 */}
-          <div className="bg-[#EBF4EE] rounded-3xl border border-[#2E7D4F]/20 p-7 sm:p-8 flex flex-col justify-between shadow-xs">
-            <div className="w-12 h-12 rounded-2xl bg-white text-[#2E7D4F] flex items-center justify-center mb-6 shadow-xs">
+          <div className="bg-[#EBF4EE] rounded-3xl border border-[#2E7D4F]/20 p-7 sm:p-8 flex flex-col justify-between shadow-none">
+            <div className="w-12 h-12 rounded-2xl bg-white text-[#2E7D4F] flex items-center justify-center mb-6 shadow-none">
               <Sparkles className="w-6 h-6 stroke-[1.7]" />
             </div>
             <div>
@@ -65,8 +65,8 @@ export const MyImpactPage: React.FC = () => {
           </div>
 
           {/* Stat 2 */}
-          <div className="bg-white rounded-3xl border border-[#E8E6E1] p-7 sm:p-8 flex flex-col justify-between shadow-xs">
-            <div className="w-12 h-12 rounded-2xl bg-[#FAFAF7] text-[#1D1D1F] flex items-center justify-center mb-6 border border-[#E8E6E1]">
+          <div className="bg-white rounded-3xl border border-[#E8E8ED] p-7 sm:p-8 flex flex-col justify-between shadow-none">
+            <div className="w-12 h-12 rounded-2xl bg-[#FBFBFD] text-[#1D1D1F] flex items-center justify-center mb-6 border border-[#E8E8ED]">
               <HeartHandshake className="w-6 h-6 stroke-[1.7]" />
             </div>
             <div>
@@ -83,8 +83,8 @@ export const MyImpactPage: React.FC = () => {
           </div>
 
           {/* Stat 3 */}
-          <div className="bg-white rounded-3xl border border-[#E8E6E1] p-7 sm:p-8 flex flex-col justify-between shadow-xs">
-            <div className="w-12 h-12 rounded-2xl bg-[#FAFAF7] text-[#1D1D1F] flex items-center justify-center mb-6 border border-[#E8E6E1]">
+          <div className="bg-white rounded-3xl border border-[#E8E8ED] p-7 sm:p-8 flex flex-col justify-between shadow-none">
+            <div className="w-12 h-12 rounded-2xl bg-[#FBFBFD] text-[#1D1D1F] flex items-center justify-center mb-6 border border-[#E8E8ED]">
               <Leaf className="w-6 h-6 stroke-[1.7]" />
             </div>
             <div>
@@ -102,8 +102,8 @@ export const MyImpactPage: React.FC = () => {
           </div>
 
           {/* Stat 4 */}
-          <div className="bg-white rounded-3xl border border-[#E8E6E1] p-7 sm:p-8 flex flex-col justify-between shadow-xs">
-            <div className="w-12 h-12 rounded-2xl bg-[#FAFAF7] text-[#1D1D1F] flex items-center justify-center mb-6 border border-[#E8E6E1]">
+          <div className="bg-white rounded-3xl border border-[#E8E8ED] p-7 sm:p-8 flex flex-col justify-between shadow-none">
+            <div className="w-12 h-12 rounded-2xl bg-[#FBFBFD] text-[#1D1D1F] flex items-center justify-center mb-6 border border-[#E8E8ED]">
               <Package className="w-6 h-6 stroke-[1.7]" />
             </div>
             <div>
@@ -121,7 +121,7 @@ export const MyImpactPage: React.FC = () => {
         </div>
 
         {/* Rincian Komoditas yang Diselamatkan */}
-        <div className="bg-white rounded-3xl border border-[#E8E6E1] p-8 sm:p-10 shadow-xs mb-16">
+        <div className="bg-white rounded-3xl border border-[#E8E8ED] p-8 sm:p-10 shadow-none mb-16">
           <div className="max-w-2xl mb-8">
             <span className="text-xs font-semibold uppercase tracking-wider text-[#2E7D4F] block mb-1">
               Rincian Bahan
@@ -138,7 +138,7 @@ export const MyImpactPage: React.FC = () => {
             {impactBreakdown.map((item, idx) => (
               <div
                 key={idx}
-                className="p-4 rounded-2xl bg-[#FAFAF7] border border-[#E8E6E1] flex items-center justify-between"
+                className="p-4 rounded-2xl bg-[#FBFBFD] border border-[#E8E8ED] flex items-center justify-between"
               >
                 <div className="flex items-center gap-3">
                   <span className="text-2xl">{item.emoji}</span>
@@ -157,7 +157,7 @@ export const MyImpactPage: React.FC = () => {
         </div>
 
         {/* Eco Statement & Action */}
-        <div className="bg-[#FAF8F5] rounded-3xl border border-[#E8E6E1] p-8 sm:p-12 text-center max-w-2xl mx-auto space-y-6">
+        <div className="bg-[#F5F5F7] rounded-3xl border border-[#E8E8ED] p-8 sm:p-12 text-center max-w-2xl mx-auto space-y-6">
           <div className="w-14 h-14 rounded-full bg-[#EBF4EE] text-[#2E7D4F] flex items-center justify-center mx-auto">
             <Award className="w-7 h-7" />
           </div>
