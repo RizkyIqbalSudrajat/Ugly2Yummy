@@ -85,3 +85,19 @@ export interface ImpactStats {
   totalPembeli: number;
   co2eKgTerselamatkan: number;
 }
+
+export interface SupplierProfile {
+  nama: string;
+  email: string;
+  kelompokTani: string;
+  lokasi: string;
+  inisial: string;
+  komoditasUtama?: string;
+  bergabungSejak?: string;
+  avatarUrl?: string;
+}
+
+export * from './supplier';
+export * from './staff';
+
+

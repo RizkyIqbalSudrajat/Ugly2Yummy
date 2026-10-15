@@ -141,7 +141,19 @@ export const Navbar: React.FC = () => {
         </nav>
 
         {/* Zone 3: Actions (Desktop) */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-2 lg:gap-3">
+          {/* Link Portal Supplier (sebelum ikon keranjang & tombol masuk) */}
+          <Link
+            to="/supplier/masuk"
+            className={`text-xs sm:text-sm font-medium transition-colors px-3 py-1.5 rounded-full ${
+              isTransparentHero
+                ? 'text-white/90 hover:text-white hover:bg-white/10'
+                : 'text-[#6E6E73] hover:text-[#1D1D1F] hover:bg-[#F5F5F7]'
+            }`}
+          >
+            Portal Supplier
+          </Link>
+
           {/* Shopping Bag Button with Badge (selalu tampil) */}
           <Link
             to="/keranjang"
@@ -152,6 +164,7 @@ export const Navbar: React.FC = () => {
             }`}
             aria-label="Keranjang belanja"
           >
+
             <ShoppingBag className="w-5 h-5" />
             {cartCount > 0 && (
               <span
@@ -349,7 +362,21 @@ export const Navbar: React.FC = () => {
                 </Link>
               </>
             )}
+
+            {/* Link Portal Supplier di Menu HP */}
+            <div className="pt-2 mt-1 border-t border-[#E8E8ED]/60">
+              <Link
+                to="/supplier/masuk"
+                className="px-3 py-2.5 rounded-xl text-sm font-medium text-[#2E7D4F] hover:bg-[#EBF4EE] flex items-center justify-between transition-colors"
+              >
+                <span>Portal Supplier</span>
+                <span className="text-[11px] font-semibold text-[#2E7D4F] bg-[#EBF4EE] px-2 py-0.5 rounded-full border border-[#2E7D4F]/20">
+                  Mitra Tani
+                </span>
+              </Link>
+            </div>
           </nav>
+
 
           <div className="pt-3 border-t border-[#E8E8ED]">
             {isLoggedIn ? (

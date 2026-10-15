@@ -1,4 +1,4 @@
-import { Ingredient, Product, UserProfile, ImpactStats } from '../types';
+import { Ingredient, Product, UserProfile, ImpactStats, SupplierProfile } from '../types';
 
 // ============================================================================
 // FOTO BAHAN "UGLY" (TIDAK SEMPURNA)
@@ -424,3 +424,14 @@ export const LANDING_IMPACT: ImpactStats = {
   totalPembeli: 9300,
   co2eKgTerselamatkan: 31200,
 };
+
+export const DEMO_SUPPLIER: SupplierProfile = {
+  nama: 'Pak Asep',
+  email: 'supplier@ugly2yummy.id',
+  kelompokTani: 'Kelompok Tani Sukamaju',
+  lokasi: 'Lembang, Jawa Barat',
+  inisial: 'PA',
+  komoditasUtama: 'Tomat Bengkok & Sayuran Segar',
+  bergabungSejak: 'Januari 2024',
+};
+
